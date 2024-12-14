@@ -85,6 +85,8 @@
   min-width: 234px;
   min-height: 110px;
   align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 .group_6 {
   flex-wrap: wrap;
