@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IGX_COMBO_DIRECTIVES, IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective, IRowSelectionEventArgs } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { UspLibrarySelectAllOrganisationResult } from '../../models/npro/usp-library-select-all-organisation-result';
 import { UspGetIngredientsResult } from '../../models/npro/usp-get-ingredients-result';
 import { Allergen } from '../../models/npro/allergen';
+import { UspLibrarySelectAllOrganisationResult } from '../../models/npro/usp-library-select-all-organisation-result';
 import { StateService } from '../../services/state.service';
 import { NProService } from '../../services/npro.service';
 

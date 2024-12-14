@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IGX_SIMPLE_COMBO_DIRECTIVES, IGX_TABS_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { UspUnitOfMeasureSelectResult } from '../../models/npro/usp-unit-of-measure-select-result';
 import { UspGetIngredientsResult } from '../../models/npro/usp-get-ingredients-result';
-import { UspRecipeGroupSelectResult } from '../../models/npro/usp-recipe-group-select-result';
+import { UspHeatScaleSelectResult } from '../../models/npro/usp-heat-scale-select-result';
 import { UspRecipeTypeSelectAllOrganisationResult } from '../../models/npro/usp-recipe-type-select-all-organisation-result';
 import { Allergen } from '../../models/npro/allergen';
 import { UspSugarTaxResult } from '../../models/npro/usp-sugar-tax-result';
-import { UspHeatScaleSelectResult } from '../../models/npro/usp-heat-scale-select-result';
+import { UspUnitOfMeasureSelectResult } from '../../models/npro/usp-unit-of-measure-select-result';
+import { UspRecipeGroupSelectResult } from '../../models/npro/usp-recipe-group-select-result';
 import { NProService } from '../../services/npro.service';
 
 @Component({
