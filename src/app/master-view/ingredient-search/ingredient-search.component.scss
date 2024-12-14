@@ -1,0 +1,242 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  overflow: hidden;
+}
+.column-layout {
+  display: flex;
+  flex-direction: column;
+}
+.group {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 24px;
+  overflow: hidden;
+  position: relative;
+  padding: 24px;
+  min-width: 50px;
+  min-height: 50px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.row-layout {
+  display: flex;
+}
+.group_1 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  padding: 16px;
+  height: 77px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 77px;
+}
+.group_2 {
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_3 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_4 {
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+}
+.group_5 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_6 {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 16px;
+  position: relative;
+  padding: 16px;
+  min-width: 280px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_7 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 24px;
+  position: relative;
+  width: 500px;
+  min-width: 430px;
+  min-height: 280px;
+  max-width: 500px;
+}
+.group_8 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_9 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  width: 560px;
+  min-width: 430px;
+  min-height: 50px;
+  max-width: 560px;
+}
+.group_10 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 0;
+  position: relative;
+  padding: 8px 0 0;
+  height: 86px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 86px;
+}
+.group_11 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  height: 82px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 82px;
+}
+.group_12 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  overflow: auto;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_13 {
+  justify-content: flex-end;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+}
+.group_14 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 24px;
+  position: relative;
+  min-width: 280px;
+  min-height: 280px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.h5 {
+  height: max-content;
+  min-width: min-content;
+}
+.icon {
+  --size: 24px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+.text {
+  color: gray;
+  margin: 8px 0 0 16px;
+  height: max-content;
+  min-width: min-content;
+}
+.button {
+  --ig-size: var(--ig-size-medium);
+  margin: 8px;
+  height: max-content;
+  flex-shrink: 0;
+}
+.user-input {
+  margin: 0 0 0 16px;
+  width: 390px;
+  height: max-content;
+  min-width: min-content;
+  max-width: 390px;
+  flex-shrink: 0;
+}
+.switch {
+  margin: 4px 8px 4px 24px;
+  width: max-content;
+  height: max-content;
+}
+.button_1 {
+  --ig-size: var(--ig-size-medium);
+  margin: 8px 0 0;
+  height: max-content;
+  flex-shrink: 0;
+}
+.button_2 {
+  --ig-size: var(--ig-size-medium);
+  margin: 8px 16px 0;
+  height: max-content;
+  flex-shrink: 0;
+}
+.grid-ingredients {
+  --ig-size: var(--ig-size-medium);
+  margin: 16px;
+  min-width: 280px;
+  min-height: 300px;
+  flex-grow: 1;
+  flex-basis: 0;
+}

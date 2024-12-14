@@ -1,0 +1,72 @@
+<div class="column-layout group">
+  <div class="row-layout group_1">
+    <div class="column-layout group_2">
+      <div class="row-layout group_3">
+        <div class="column-layout group_4">
+          <p class="text">
+            Please enter your User Name or Email and your Password to log in.
+          </p>
+        </div>
+        <div class="column-layout group_5">
+          <img src="/assets/FDS%20Logo.svg" class="image" />
+        </div>
+      </div>
+      <igx-input-group type="border" class="username">
+        <input type="text" required igxInput />
+        <label igxLabel>User name/Email</label>
+      </igx-input-group>
+      <igx-input-group type="border" class="username">
+        <input type="password" required igxInput />
+        <label igxLabel>Password</label>
+      </igx-input-group>
+      <igx-checkbox labelPosition="after" class="checkbox">
+        I agree to the Food Data Services Terms &amp; Conditions
+      </igx-checkbox>
+      <div class="row-layout group_6">
+        <button igxButton="contained" type="button" igxRipple routerLink="/master-view/home" class="button">
+          Log In
+        </button>
+      </div>
+      <a target="_blank" class="ig-typography__body-1 hyperlink">
+        Forgot Password
+      </a>
+    </div>
+  </div>
+</div>
+<igx-dialog #enterAValidEmailAddress>
+  <igx-dialog-title>
+    <h5>
+      Invalid Email
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Please enter a valid email address</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="enterAValidEmailAddress">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="enterAValidEmailAddress">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog #confirmed>
+  <igx-dialog-title>
+    <h5>
+      Email Sent
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <div class="column-layout group_7">
+      <p class="text">
+        If the email you entered matches a valid license in our system you will shortly receive an email with instructions on how to reset your password
+      </p>
+    </div>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="confirmed" class="button_1">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>

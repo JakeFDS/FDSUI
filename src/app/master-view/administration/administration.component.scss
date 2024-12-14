@@ -1,0 +1,333 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.row-layout {
+  display: flex;
+}
+.group {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 24px;
+  position: relative;
+  padding: 8px;
+  min-width: 280px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.column-layout {
+  display: flex;
+  flex-direction: column;
+}
+.group_1 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 8px;
+  position: relative;
+  min-width: 272px;
+  min-height: 280px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_2 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  min-width: 272px;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_3 {
+  border-color: gray;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  min-width: 266px;
+  min-height: 280px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_4 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  align-self: center;
+}
+.group_5 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  overflow: hidden;
+  min-width: 234px;
+  min-height: 110px;
+  align-self: stretch;
+}
+.group_6 {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  overflow: hidden;
+  min-width: 234px;
+  min-height: 110px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_7 {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 0;
+  overflow: hidden;
+  min-width: 234px;
+  min-height: 110px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_8 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  min-width: 272px;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_9 {
+  border-color: gray;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 272px;
+  min-height: 50px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_10 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  min-width: 320px;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_11 {
+  border-color: gray;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  min-width: 272px;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_12 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  width: 842px;
+  height: 522px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 842px;
+  max-height: 522px;
+}
+.group_13 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  height: 394px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 394px;
+}
+.group_14 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+}
+.group_15 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  width: 577px;
+  height: 528px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 577px;
+  max-height: 528px;
+}
+.h5 {
+  text-align: center;
+  color: gray;
+  z-index: 1;
+  position: sticky;
+  margin: 8px;
+  height: max-content;
+  min-width: min-content;
+  flex-shrink: 0;
+}
+.image {
+  object-fit: contain;
+  margin: 8px;
+  width: 100px;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100px;
+  flex-grow: 1;
+}
+.allergen-llibrary {
+  margin: 8px;
+  height: max-content;
+  min-width: 0;
+}
+.image_1 {
+  object-fit: fill;
+  margin: 8px;
+  width: 100px;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100px;
+  align-self: center;
+}
+.hotness-library {
+  margin: 8px;
+  height: max-content;
+  min-width: 0;
+  align-self: center;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.h5_1 {
+  text-align: center;
+  color: gray;
+  margin: 8px;
+  height: max-content;
+  min-width: min-content;
+}
+.image_2 {
+  object-fit: contain;
+  margin: 8px;
+  min-width: 0;
+  min-height: 0;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.text {
+  text-align: center;
+  color: var(--ig-gray-400);
+  position: relative;
+  margin: 0 8px 8px;
+  height: max-content;
+  min-width: min-content;
+  align-self: center;
+}
+.image_3 {
+  object-fit: fill;
+  margin: 8px;
+  width: 100px;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100px;
+  flex-shrink: 0;
+}
+.grid-sugar-tax {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.grid-suitability {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+}
+.grid-heat-scale {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  max-width: 813px;
+}
+.grid-recipe-type {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  max-height: 497px;
+}
+.grid-recipe-group {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.grid-ingredient-library {
+  --ig-size: var(--ig-size-medium);
+  min-width: 600px;
+  min-height: 300px;
+  max-height: 575px;
+}
+.grid {
+  --ig-size: var(--ig-size-medium);
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.cancel {
+  --ig-size: var(--ig-size-medium);
+  height: max-content;
+}

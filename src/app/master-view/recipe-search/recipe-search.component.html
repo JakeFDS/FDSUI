@@ -1,0 +1,122 @@
+<div class="column-layout group">
+  <div class="row-layout group_1">
+    <div class="column-layout group_2">
+      <h5 class="h5">
+        Search Recipe
+      </h5>
+    </div>
+    <div class="column-layout group_3">
+      <div class="row-layout group_4">
+        <button igxButton="contained" type="button" igxRipple [igxToggleAction]="dialogDeleteRecipe" class="button">
+          Delete
+        </button>
+        <button igxButton="contained" type="button" igxRipple [routerLink]="['/master-view/recipe-add-edit', recipeId ?? '']" class="button">
+          View
+        </button>
+        <button igxButton="contained" type="button" igxRipple [routerLink]="['/master-view/recipe-add-edit', recipeId ?? '']" class="button">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="column-layout group_5">
+    <div class="row-layout group_6">
+      <div class="column-layout group_7">
+        <div class="row-layout group_8">
+          <div class="column-layout group_9">
+            <div class="row-layout group_10">
+              <igx-input-group type="border" class="user-input">
+                <igx-suffix>
+                  <igx-icon class="icon">
+                    clear
+                  </igx-icon>
+                </igx-suffix>
+                <input type="text" [value]="searchTerm1!" igxInput />
+                <label igxLabel>Search for</label>
+              </igx-input-group>
+            </div>
+            <div class="row-layout group_11">
+              <igx-combo type="border" [data]="nProUspRecipeGroupSelectResult" [ngModel]="groupIds" displayKey="recipeGroupName" class="user-input">
+                <label igxLabel>In Group</label>
+              </igx-combo>
+            </div>
+            <div class="row-layout group_3">
+              <div class="column-layout group_12">
+                <div class="row-layout group_10">
+                  <igx-combo type="border" [data]="nProUspRecipeTypeSelectAllOrganisationResult" valueKey="recipeTypeId" displayKey="recipeType" class="combo">
+                    <label igxLabel>Of type</label>
+                  </igx-combo>
+                </div>
+              </div>
+            </div>
+            <div class="row-layout group_13">
+              <button igxButton="outlined" type="button" igxRipple class="button_1">
+                Clear
+              </button>
+              <button igxButton="contained" type="button" igxRipple class="button_2">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column-layout group_14">
+        <igx-grid [data]="nProUspGetRecipesResult" primaryKey="recipeId" rowSelection="single" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-ingredients">
+          <igx-grid-toolbar>
+            <igx-grid-toolbar-actions>
+              <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+            </igx-grid-toolbar-actions>
+            <igx-grid-toolbar-title>Recipes</igx-grid-toolbar-title>
+          </igx-grid-toolbar>
+          <igx-column field="recipeId" dataType="string" header="recipeId" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="reference" dataType="string" header="Reference" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="recipeName" dataType="string" header="Recipe Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="revision" dataType="string" header="Revision" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="dateCreated" dataType="date" header="Date Created" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="cookingLoss" dataType="number" header="Cooking Loss" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="finishedWeight" dataType="number" header="Finished Weight" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="totalWeight" dataType="number" header="Total Weight" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="recommendedPortionWeight" dataType="number" header="Recommended Portion Weight" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="cookingLossAsMoisture" dataType="boolean" header="Loss As Moisture" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="portionCount" dataType="number" header="Portion Count" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="calculatePortions" dataType="boolean" header="Calculate Portions" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="addedSugar" dataType="number" header="Added Sugar" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="liquid" dataType="boolean" header="Liquid" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="specificGravity" dataType="number" header="Specific Gravity" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="sugarTaxApplies" dataType="boolean" header="Sugar Tax Applies" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="sugarTaxId" dataType="string" header="Sugar Tax Id" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="publishedDate" dataType="date" header="Published Date" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          @if (columnVisible) {
+            <igx-column field="isLocked" dataType="boolean" header="is Locked" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          }
+          <igx-column field="password" dataType="string" header="Password" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="totalCostPerPortion" dataType="number" header="Cost Per Portion" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="profitMargiin" dataType="number" header="Profit Margiin" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="salePricePerPortion" dataType="number" header="Price Per Portion" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="recipeTypeId" dataType="string" header="Recipe Type Id" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="internalReference" dataType="string" header="Internal Reference" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="organisationId" dataType="string" header="Organisation Id" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="likeness" dataType="number" header="Likeness" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+        </igx-grid>
+      </div>
+    </div>
+  </div>
+</div>
+<igx-dialog [closeOnEscape]="false" #dialogDeleteRecipe>
+  <igx-dialog-title>
+    <h5>
+      Confirm Delete
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Are you sure you want to delete the slected recipe(s)?</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogDeleteRecipe">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogDeleteRecipe">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>

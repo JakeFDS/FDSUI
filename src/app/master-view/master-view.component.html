@@ -1,0 +1,26 @@
+<igx-navbar class="navbar">
+  <igx-navbar-title class="navbar-content">
+    <igx-avatar src="/assets/FDS%20Logo.svg" shape="circle" class="avatar"></igx-avatar>
+    <button igxButton="flat" type="button" igxRipple routerLink="/master-view/home" class="button">
+      Home
+    </button>
+    <button igxButton="flat" type="button" igxRipple routerLink="/master-view/administration" class="button">
+      Administration
+    </button>
+  </igx-navbar-title>
+</igx-navbar>
+<div class="view-container">
+  <router-outlet></router-outlet>
+</div>
+<div class="row-layout footer">
+  <div class="column-layout footer">
+    <h5 class="h5">
+      {{ copyright }}
+    </h5>
+  </div>
+  <div class="column-layout footer-right">
+    <h5 class="h5_1">
+      {{ version }}
+    </h5>
+  </div>
+</div>

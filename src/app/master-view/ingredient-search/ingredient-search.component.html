@@ -1,0 +1,113 @@
+<div class="column-layout group">
+  <div class="row-layout group_1">
+    <div class="column-layout group_2">
+      <h5 class="h5">
+        Search Ingredient
+      </h5>
+    </div>
+    <div class="column-layout group_3">
+      <div class="row-layout group_4">
+        <button igxButton="contained" type="button" igxRipple class="button">
+          Delete
+        </button>
+        <button igxButton="contained" type="button" igxRipple [routerLink]="['/master-view/ingredient-add-edit', ingredientId ?? '']" class="button">
+          Edit
+        </button>
+        <button igxButton="contained" type="button" igxRipple class="button">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="column-layout group_5">
+    <div class="row-layout group_6">
+      <div class="column-layout group_7">
+        <div class="row-layout group_8">
+          <div class="column-layout group_9">
+            <div class="row-layout group_10">
+              <igx-input-group type="border" class="user-input">
+                <igx-suffix>
+                  <igx-icon class="icon">
+                    clear
+                  </igx-icon>
+                </igx-suffix>
+                <input type="text" [value]="searchTerm!" igxInput />
+                <label igxLabel>Search for</label>
+              </igx-input-group>
+            </div>
+            <div class="row-layout group_11">
+              <igx-combo type="border" [data]="nProUspLibrarySelectAllOrganisationResult" valueKey="libraryId" displayKey="lIbraryName" class="user-input">
+                <label igxLabel>In Library</label>
+              </igx-combo>
+            </div>
+            <div class="row-layout group_3">
+              <div class="column-layout group_12">
+                <p class="ig-typography__subtitle-1 text">
+                  Exclude Allergens
+                </p>
+                @for (item of nProAllergen; track item) {
+                  <igx-switch class="switch">
+                    {{ item.allergenName }}
+                  </igx-switch>
+                }
+              </div>
+            </div>
+            <div class="row-layout group_13">
+              <button igxButton="outlined" type="button" igxRipple class="button_1">
+                Clear
+              </button>
+              <button igxButton="contained" type="button" igxRipple class="button_2">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column-layout group_14">
+        <igx-grid [data]="nProUspGetIngredientsResult" primaryKey="ingredientId" rowSelection="single" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="gridIngredientsRowSelectionChanging($event)" class="grid-ingredients">
+          <igx-grid-toolbar>
+            <igx-grid-toolbar-actions>
+              <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>
+              <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+            </igx-grid-toolbar-actions>
+            <igx-grid-toolbar-title>Ingredients</igx-grid-toolbar-title>
+          </igx-grid-toolbar>
+          <igx-paginator [perPage]="15"></igx-paginator>
+          @if (columnVisible) {
+            <igx-column field="ingredientId" dataType="string" header="ingredientId" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          }
+          <igx-column field="foodCode" dataType="string" header="Food Code" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="internalReference" dataType="string" header="Internal Reference" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="foodName" dataType="string" header="Food Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="displayName" dataType="string" header="Display Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="costPerKilo" dataType="number" header="Cost/KIlo" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          <igx-column field="groupName" dataType="string" header="Group Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          @if (columnVisible1) {
+            <igx-column field="organisationId" dataType="string" header="organisationId" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          }
+          @if (columnVisible2) {
+            <igx-column field="likeness" dataType="number" header="likeness" [hidden]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+          }
+        </igx-grid>
+      </div>
+    </div>
+  </div>
+</div>
+<igx-dialog #dialog>
+  <igx-dialog-title>
+    <h5>
+      Delete Ingredient
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Are you sure you want to delete ingredient(s)?</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialog">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialog">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>

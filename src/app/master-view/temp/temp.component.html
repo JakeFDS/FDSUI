@@ -1,0 +1,40 @@
+<div class="row-layout group">
+  <form (ngSubmit)="ngSubmitNewIngredient()" [formGroup]="newIngredientFormModel" (reset)="onResetForm($event)" class="column-layout form">
+    <h6>
+      Add api/Ingredient/addIngredient
+    </h6>
+    <div class="column-layout form_fields">
+      <igx-input-group type="border">
+        <input type="text" igxInput formControlName="displayName" />
+        <label igxLabel>displayName</label>
+      </igx-input-group>
+      <igx-input-group type="border">
+        <input type="text" igxInput formControlName="internalReference" />
+        <label igxLabel>internalReference</label>
+      </igx-input-group>
+      <igx-input-group type="border">
+        <input type="text" igxInput formControlName="foodCode" />
+        <label igxLabel>foodCode</label>
+      </igx-input-group>
+      <igx-input-group type="border">
+        <input type="number" igxInput formControlName="costPerKilo" />
+        <label igxLabel>costPerKilo</label>
+      </igx-input-group>
+    </div>
+    <div class="row-layout actions">
+      <button igxButton="outlined" type="reset" igxRipple class="button">
+        Reset
+      </button>
+      <button igxButton="contained" type="submit" igxRipple class="button">
+        Add
+      </button>
+    </div>
+    <igx-snackbar actionText="OK" #snackbarsuccess>
+      Your new submission was saved successfully!
+    </igx-snackbar>
+    <igx-snackbar actionText="OK" #snackbarerror>
+      Uh-oh! Something went wrong.
+    </igx-snackbar>
+  </form>
+  <form class="column-layout form"></form>
+</div>

@@ -1,0 +1,367 @@
+<div class="row-layout group">
+  <div class="column-layout group_1">
+    <div class="row-layout group_2">
+      <div class="column-layout group_3">
+        <div class="row-layout group_4">
+          <h5 class="h5">
+            Misc Libraries
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogAllergenLibrary" class="row-layout group_5">
+          <img src="/assets/092-nuts.svg" class="image" />
+          <h5 class="allergen-llibrary">
+            Allergen Library
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogHeatScaleLibrary" class="row-layout group_6">
+          <img src="/assets/068-nogada-pepper.svg" class="image_1" />
+          <h5 class="hotness-library">
+            Hotness Library
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogSugarTaxLibrary" class="row-layout group_7">
+          <img src="/assets/013-sugar.svg" class="image_1" />
+          <h5 class="hotness-library">
+            Sugar Tax Library
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="row-layout group_8">
+      <div routerLink="/master-view/organisation" class="column-layout group_9">
+        <h5 class="h5_1">
+          Organisation Details
+        </h5>
+        <img src="/assets/008-drive-thru.svg" class="image_2" />
+        <p class="ig-typography__subtitle-1 text">
+          Click here to edit your Organisation Details
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="column-layout group_1">
+    <div class="row-layout group_2">
+      <div class="column-layout group_3">
+        <div class="row-layout group_4">
+          <h5 class="h5">
+            Recipe Libraries
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogRecipeGroupLibrary" class="row-layout group_6">
+          <img src="/assets/003-course.svg" class="image_3" />
+          <h5 class="hotness-library">
+            Recipe Group
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogSuitabilityLibrary" class="row-layout group_6">
+          <img src="/assets/072-carrot.svg" class="image_3" />
+          <h5 class="hotness-library">
+            Recipe Suitability
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogRecipeTypeLibrary" class="row-layout group_7">
+          <img src="/assets/253-dinner.svg" class="image_3" />
+          <h5 class="hotness-library">
+            Recipe Type
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="row-layout group_10">
+      <div class="column-layout group_9">
+        <h5 class="h5_1">
+          Users
+        </h5>
+        <img src="/assets/no-image-14596.svg" class="image_2" />
+        <p class="ig-typography__subtitle-1 text">
+          Click here to manage the User
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="column-layout group_1">
+    <div class="row-layout group_2">
+      <div class="column-layout group_3">
+        <div class="row-layout group_4">
+          <h5 class="h5">
+            Ingredient Libraries
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogIngredientGroupLibrary" class="row-layout group_6">
+          <img src="/assets/066-food-2.svg" class="image_3" />
+          <h5 class="hotness-library">
+            Ingredient Group
+          </h5>
+        </div>
+        <div [igxToggleAction]="dialogIngredientLibrary" class="row-layout group_6">
+          <img src="/assets/014-nutrition-3.svg" class="image_3" />
+          <h5 class="hotness-library">
+            Ingredient Library
+          </h5>
+        </div>
+        <div class="row-layout group_7">
+          <img src="/assets/no-image-14596.svg" class="image_3" />
+          <h5 class="hotness-library">
+            FREE
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="row-layout group_11"></div>
+  </div>
+</div>
+<igx-dialog [closeOnEscape]="false" #dialogSugarTaxLibrary>
+  <igx-dialog-title>
+    <h5>
+      Sugar Tax Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <div class="column-layout group_12">
+      <igx-grid [data]="nProUspSugarTaxResult" primaryKey="sugarTaxId" class="grid-sugar-tax">
+        <igx-grid-toolbar>
+          <igx-grid-toolbar-actions>
+            <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+          </igx-grid-toolbar-actions>
+          <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+        </igx-grid-toolbar>
+        @if (columnVisible) {
+          <igx-column field="sugarTaxId" dataType="string" header="Sugar Tax Id" [hidden]="true" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        <igx-column field="taxBand" dataType="string" header="Tax Band" [sortable]="true" [selectable]="false"></igx-column>
+        <igx-column field="description" dataType="string" header="Description" [sortable]="true" [selectable]="false"></igx-column>
+        <igx-column field="taxPerLitre" dataType="number" header="Tax Per Litre" [sortable]="true" [selectable]="false"></igx-column>
+        <igx-column field="greaterThan" dataType="number" header="Greater Than" [sortable]="true" [selectable]="false"></igx-column>
+      </igx-grid>
+    </div>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogSugarTaxLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnOutsideSelect]="true" #dialogSuitabilityLibrary>
+  <igx-dialog-title>
+    <h5>
+      Suitability Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <igx-grid [data]="nProUspSuitabilityResult" primaryKey="suitabilityId" class="grid-suitability">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+        <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      @if (columnVisible1) {
+        <igx-column field="suitabilityId" dataType="string" header="suitabilityId" [hidden]="true" [sortable]="true" [selectable]="false"></igx-column>
+      }
+      <igx-column field="suitabilityDescription" dataType="string" header="Description" [sortable]="true" [selectable]="false"></igx-column>
+    </igx-grid>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="contained" type="button" igxRipple [igxToggleAction]="dialogSuitabilityLibrary" class="cancel">
+      Close
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnEscape]="false" #dialogHeatScaleLibrary>
+  <igx-dialog-title>
+    <h5>
+      Heat Scale LIbrary
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <igx-grid [data]="nProUspHeatScaleSelectResult" primaryKey="heatScaleId" width="813px" class="grid-heat-scale">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+        <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      @if (columnVisible2) {
+        <igx-column field="heatScaleId" dataType="string" header="heatScaleId" [sortable]="true" [selectable]="false"></igx-column>
+      }
+      <igx-column field="heatName" dataType="string" header="Name" width="195px" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="heatDescription" dataType="string" header="Description" [sortable]="true" [selectable]="false"></igx-column>
+    </igx-grid>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogHeatScaleLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnOutsideSelect]="true" #dialogRecipeTypeLibrary>
+  <igx-dialog-title>
+    <h5>
+      Recipe Type Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <igx-grid [data]="nProUspRecipeTypeSelectAllOrganisationResult" primaryKey="recipeTypeId" [rowEditable]="true" height="497px" class="grid-recipe-type">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+        <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      <igx-paginator [perPage]="10"></igx-paginator>
+      <igx-column field="recipeTypeId" dataType="string" header="recipeTypeId" [hidden]="true" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="recipeType" dataType="string" header="Recipe Type" [sortable]="true" [selectable]="false"></igx-column>
+    </igx-grid>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogRecipeTypeLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnEscape]="false" #dialogRecipeGroupLibrary>
+  <igx-dialog-title>
+    <h5>
+      Recipe Group Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <div class="column-layout group_13">
+      <igx-grid [data]="nProUspRecipeGroupSelectResult" primaryKey="recipeGroupId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-recipe-group">
+        <igx-grid-toolbar>
+          <igx-grid-toolbar-actions>
+            <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+          </igx-grid-toolbar-actions>
+          <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+        </igx-grid-toolbar>
+        <igx-paginator [perPage]="10"></igx-paginator>
+        @if (columnVisible3) {
+          <igx-column field="recipeGroupId" dataType="string" header="recipeGroupId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        <igx-column field="recipeGroupName" dataType="string" header="Group Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      </igx-grid>
+    </div>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogRecipeGroupLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnEscape]="false" #dialogIngredientGroupLibrary>
+  <igx-dialog-title>
+    <h5>
+      Ingredient Group Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <div class="column-layout group_14">
+      <igx-grid [data]="nProUspIngredientGroupSelectResult" primaryKey="groupId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-recipe-group">
+        <igx-paginator [perPage]="10"></igx-paginator>
+        @if (columnVisible4) {
+          <igx-column field="groupId" dataType="string" header="groupId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        <igx-column field="groupName" dataType="string" header="Group Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      </igx-grid>
+    </div>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogIngredientGroupLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnOutsideSelect]="true" #dialogIngredientLibrary>
+  <igx-dialog-title>
+    <h5>
+      Ingredient Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <igx-grid [data]="nProUspLibrarySelectAllOrganisationResult" primaryKey="libraryId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" height="575px" class="grid-ingredient-library">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+        <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      <igx-paginator [perPage]="10"></igx-paginator>
+      @if (columnVisible5) {
+        <igx-column field="libraryId" dataType="string" header="libraryId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      }
+      <igx-column field="lIbraryName" dataType="string" header="Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="libraryVersion" dataType="string" header="Version" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="libraryDate" dataType="date" header="Date" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="libraryDescription" dataType="string" header="Description" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="countryCode" dataType="string" header="Country Code" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      @if (columnVisible6) {
+        <igx-column field="organisationId" dataType="string" header="organisationId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      }
+      @if (columnVisible7) {
+        <igx-column field="userLibrary" dataType="boolean" header="userLibrary" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+      }
+    </igx-grid>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogIngredientLibrary" class="cancel">
+      Cancel
+    </button>
+    <button igxButton="contained" type="button" igxRipple class="cancel">
+      Save
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnOutsideSelect]="true" #dialogAllergenLibrary>
+  <igx-dialog-title>
+    <h5>
+      Allergen Library
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <div class="row-layout group_15">
+      <igx-grid [data]="nProAllergen" primaryKey="allergenId" class="grid">
+        <igx-paginator [perPage]="8"></igx-paginator>
+        @if (columnVisible8) {
+          <igx-column field="allergenId" dataType="string" header="allergenId" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        <igx-column field="allergenName" dataType="string" header="Allergen" [sortable]="true" [selectable]="false"></igx-column>
+        <igx-column field="allergenDescription" dataType="string" header="Description" [sortable]="true" [selectable]="false"></igx-column>
+        @if (columnVisible9) {
+          <igx-column field="systemAllergen" dataType="boolean" header="systemAllergen" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        @if (columnVisible10) {
+          <igx-column field="breakdown" dataType="string" header="breakdown" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        @if (columnVisible11) {
+          <igx-column field="boldInDeclaration" dataType="boolean" header="boldInDeclaration" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        @if (columnVisible12) {
+          <igx-column field="organisationId" dataType="string" header="organisationId" [sortable]="true" [selectable]="false"></igx-column>
+        }
+        @if (columnVisible13) {
+          <igx-column field="internalReference" dataType="string" header="internalReference" [sortable]="true" [selectable]="false"></igx-column>
+        }
+      </igx-grid>
+    </div>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogAllergenLibrary" class="cancel">
+      Cancel
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>

@@ -1,0 +1,336 @@
+<igx-dialog [closeOnEscape]="false" #dialogRemoveImage>
+  <igx-dialog-title>
+    <h5>
+      Clear Image
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Are you sure you want to remove the image from the selected ingredient?</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogRemoveImage">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogRemoveImage">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnEscape]="false" #dialogDeleteIngredients>
+  <igx-dialog-title>
+    <h5>
+      Confirm Deletion
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Are you sure you want to delete the selected ingredient?</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogDeleteIngredients">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogDeleteIngredients">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<igx-dialog [closeOnEscape]="false" #dialogCancelChanges>
+  <igx-dialog-title>
+    <h5>
+      Cancel Changes
+    </h5>
+  </igx-dialog-title>
+  <ng-container>
+    <p>Are you sure you want to cancel your changes?</p>
+  </ng-container>
+  <igx-dialog-actions>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogCancelChanges">
+      Cancel
+    </button>
+    <button igxButton="flat" igxRipple [igxToggleAction]="dialogCancelChanges">
+      OK
+    </button>
+  </igx-dialog-actions>
+</igx-dialog>
+<div class="row-layout group">
+  <div class="column-layout group_1">
+    <h5 class="h5">
+      Add/Edit Ingredient
+    </h5>
+  </div>
+  <div class="column-layout group_2">
+    <div class="row-layout group_3">
+      <button igxButton="outlined" type="button" igxRipple class="button">
+        Cancel
+      </button>
+      <button igxButton="contained" type="button" igxRipple [igxToggleAction]="dialogDeleteIngredients" class="button">
+        Delete
+      </button>
+      <button igxButton="contained" type="button" igxRipple class="button">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row-layout group_4">
+  <div class="column-layout group_5">
+    <div class="row-layout group_2">
+      <div class="row-layout group_6">
+        <div class="column-layout group_7">
+          <div class="row-layout group_8">
+            <div class="column-layout group_9">
+              <div class="row-layout group_10">
+                <img src="/assets/no-image-14596.svg" class="ingredient-image" />
+              </div>
+              <div class="row-layout group_11">
+                <button igxButton="outlined" type="button" igxRipple [igxToggleAction]="dialogRemoveImage" class="button_1">
+                  <igx-icon>
+                    delete_forever
+                  </igx-icon>
+                  <span>Clear</span>
+                </button>
+                <button igxButton="contained" type="button" igxRipple class="button_2">
+                  <igx-icon>
+                    add_photo_alternate
+                  </igx-icon>
+                  <span>Add</span>
+                </button>
+              </div>
+              <div class="row-layout group_2">
+                <div class="column-layout group_12">
+                  <igx-input-group type="border" class="food-code-5">
+                    <igx-suffix>
+                      <igx-icon class="icon">
+                        clear
+                      </igx-icon>
+                    </igx-suffix>
+                    <input type="text" [value]="foodCode!" placeholder="17-208" required igxInput />
+                    <label igxLabel>Food code</label>
+                  </igx-input-group>
+                  <igx-input-group type="border" class="food-code-5">
+                    <igx-suffix>
+                      <igx-icon class="icon">
+                        clear
+                      </igx-icon>
+                    </igx-suffix>
+                    <input type="text" [value]="internalReference!" placeholder="Beer001" required igxInput />
+                    <label igxLabel>Internal reference</label>
+                  </igx-input-group>
+                  <igx-input-group type="border" class="food-code-5">
+                    <igx-suffix>
+                      <igx-icon class="icon">
+                        clear
+                      </igx-icon>
+                    </igx-suffix>
+                    <input type="text" [value]="foodName!" placeholder="Beer, bitter, best, premium" required igxInput />
+                    <label igxLabel>Food name</label>
+                  </igx-input-group>
+                  <igx-input-group type="border" class="food-code-5">
+                    <igx-suffix>
+                      <igx-icon class="icon">
+                        clear
+                      </igx-icon>
+                    </igx-suffix>
+                    <input type="text" [value]="displayName!" placeholder="Best Bitter" required igxInput />
+                    <label igxLabel>Display name</label>
+                  </igx-input-group>
+                  <igx-input-group type="border" class="food-code-5">
+                    <igx-suffix>
+                      <igx-icon class="icon">
+                        clear
+                      </igx-icon>
+                    </igx-suffix>
+                    <input type="number" placeholder="Cost per Kilo/Litre" required igxInput [(ngModel)]="value" />
+                    <label igxLabel>Cost per Kilo/Litre</label>
+                  </igx-input-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column-layout group_13">
+          <div class="row-layout group_14">
+            <div class="column-layout group_15">
+              <igx-tabs [disableAnimation]="true" class="tabs">
+                <igx-tab-item [selected]="true" class="tab-item">
+                  <igx-tab-header>
+                    <span igxTabHeaderLabel>Main Eight</span>
+                  </igx-tab-header>
+                  <igx-tab-content class="row-layout tab-item-content">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectMainEightResult" primaryKey="ingredientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                      <igx-grid-toolbar>
+                        <igx-grid-toolbar-actions>
+                          <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+                        </igx-grid-toolbar-actions>
+                        <igx-grid-toolbar-title>Grid Toolbar</igx-grid-toolbar-title>
+                      </igx-grid-toolbar>
+                      <igx-paginator [perPage]="10"></igx-paginator>
+                      @if (columnVisible) {
+                        <igx-column field="ingredientId" dataType="string" header="ingredientId" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible1) {
+                        <igx-column field="nutrientId" dataType="string" header="nutrientId" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible2) {
+                        <igx-column field="displayOrder" dataType="number" header="displayOrder" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      <igx-column field="label" dataType="string" header="Name" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue" dataType="number" header="Value" width="297px" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="unitOfMeasurement" dataType="string" header="Unit" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      @if (columnVisible3) {
+                        <igx-column field="abbreviation" dataType="string" header="abbreviation" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                    </igx-grid>
+                  </igx-tab-content>
+                </igx-tab-item>
+                <igx-tab-item class="tab-item">
+                  <igx-tab-header>
+                    <span igxTabHeaderLabel>Vitamins</span>
+                  </igx-tab-header>
+                  <igx-tab-content class="row-layout tab-item-content">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectVitaminsResult" primaryKey="ingredientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                      @if (columnVisible4) {
+                        <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible5) {
+                        <igx-column field="nutrientId" dataType="string" header="nutrientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible6) {
+                        <igx-column field="displayOrder" dataType="number" header="displayOrder" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      <igx-column field="label" dataType="string" header="Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue" dataType="number" header="Value" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="unitOfMeasurement" dataType="string" header="Unit" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      @if (columnVisible7) {
+                        <igx-column field="abbreviation" dataType="string" header="abbreviation" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                    </igx-grid>
+                  </igx-tab-content>
+                </igx-tab-item>
+                <igx-tab-item class="tab-item">
+                  <igx-tab-header>
+                    <span igxTabHeaderLabel>All</span>
+                  </igx-tab-header>
+                  <igx-tab-content class="row-layout tab-item-content">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesVisibleSelectResult" primaryKey="ingredientId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                      <igx-paginator [perPage]="10"></igx-paginator>
+                      @if (columnVisible8) {
+                        <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible9) {
+                        <igx-column field="nutrientId" dataType="string" header="nutrientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      @if (columnVisible10) {
+                        <igx-column field="displayOrder" dataType="number" header="displayOrder" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      }
+                      <igx-column field="label" dataType="string" header="label" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue" dataType="number" header="nutrientValue" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="unitOfMeasurement" dataType="string" header="unitOfMeasurement" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                    </igx-grid>
+                  </igx-tab-content>
+                </igx-tab-item>
+                <igx-tab-item class="tab-item">
+                  <igx-tab-header>
+                    <span igxTabHeaderLabel>Allergens</span>
+                  </igx-tab-header>
+                  <igx-tab-content class="row-layout tab-item-content">
+                    <div class="column-layout group_2">
+                      <igx-grid [data]="nProAllergen" primaryKey="allergenId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                        @if (columnVisible11) {
+                          <igx-column field="allergenId" dataType="string" header="allergenId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        <igx-column field="allergenName" dataType="string" header="Allergen" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        <igx-column field="allergenDescription" dataType="string" header="Description" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        @if (columnVisible12) {
+                          <igx-column field="systemAllergen" dataType="boolean" header="systemAllergen" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        @if (columnVisible13) {
+                          <igx-column field="breakdown" dataType="string" header="breakdown" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        @if (columnVisible14) {
+                          <igx-column field="boldInDeclaration" dataType="boolean" header="boldInDeclaration" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        @if (columnVisible15) {
+                          <igx-column field="organisationId" dataType="string" header="organisationId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        @if (columnVisible16) {
+                          <igx-column field="internalReference" dataType="string" header="internalReference" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                        }
+                        <igx-column field="included" dataType="boolean" header="Present" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      </igx-grid>
+                    </div>
+                  </igx-tab-content>
+                </igx-tab-item>
+                <igx-tab-item class="tab-item">
+                  <igx-tab-header>
+                    <span igxTabHeaderLabel>Additional</span>
+                  </igx-tab-header>
+                  <igx-tab-content class="row-layout tab-item-content">
+                    <div class="row-layout group_2">
+                      <div class="column-layout group_16">
+                        <igx-input-group type="border" class="food-code-5">
+                          <igx-suffix>
+                            <igx-icon class="icon">
+                              clear
+                            </igx-icon>
+                          </igx-suffix>
+                          <input type="number" [value]="edibleProportion" placeholder="1" required igxInput />
+                          <label igxLabel>EdibleProportion</label>
+                        </igx-input-group>
+                        <igx-input-group type="border" class="food-code-5">
+                          <igx-suffix>
+                            <igx-icon class="icon">
+                              clear
+                            </igx-icon>
+                          </igx-suffix>
+                          <input type="number" [value]="totalSolids" placeholder="0" required igxInput />
+                          <label igxLabel>Total solids</label>
+                        </igx-input-group>
+                        <igx-input-group type="border" class="food-code-5">
+                          <igx-suffix>
+                            <igx-icon class="icon">
+                              clear
+                            </igx-icon>
+                          </igx-suffix>
+                          <input type="number" [value]="nitrogenConversionFactor" placeholder="6.25" required igxInput />
+                          <label igxLabel>Nitrogen Conversion factor</label>
+                        </igx-input-group>
+                        <igx-input-group type="border" class="food-code-5">
+                          <igx-suffix>
+                            <igx-icon class="icon">
+                              clear
+                            </igx-icon>
+                          </igx-suffix>
+                          <input type="number" [value]="glycerolConversionFactor" placeholder="0" required igxInput />
+                          <label igxLabel>Glycerol Conversion factor</label>
+                        </igx-input-group>
+                        <div class="row-layout group_17">
+                          <div class="column-layout group_18">
+                            <igx-switch labelPosition="before" [(ngModel)]="checked" class="switch">
+                              Is Liquid
+                            </igx-switch>
+                          </div>
+                          <div class="column-layout group_2">
+                            <igx-input-group type="border" class="food-code-5">
+                              <igx-suffix>
+                                <igx-icon class="icon">
+                                  clear
+                                </igx-icon>
+                              </igx-suffix>
+                              <input type="number" [(ngModel)]="specificGravity" placeholder="1" required igxInput />
+                              <label igxLabel>Specific Gravity</label>
+                            </igx-input-group>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </igx-tab-content>
+                </igx-tab-item>
+              </igx-tabs>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

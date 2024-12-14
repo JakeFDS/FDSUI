@@ -1,0 +1,29 @@
+export interface UspGetRecipesResult {
+  recipeId: string;
+  reference: string;
+  recipeName: string;
+  revision: string;
+  dateCreated: Date;
+  cookingLoss: number;
+  finishedWeight: number;
+  totalWeight: number;
+  recommendedPortionWeight: number;
+  cookingLossAsMoisture: boolean;
+  portionCount: number;
+  calculatePortions: boolean;
+  addedSugar: number;
+  liquid: boolean;
+  specificGravity: number;
+  sugarTaxApplies: boolean;
+  sugarTaxId: string;
+  publishedDate: Date;
+  isLocked: boolean;
+  password: string;
+  totalCostPerPortion: number;
+  profitMargiin: number;
+  salePricePerPortion: number;
+  recipeTypeId: string;
+  internalReference: string;
+  organisationId: string;
+  likeness: number;
+}

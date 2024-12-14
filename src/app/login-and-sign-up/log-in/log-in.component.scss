@@ -1,0 +1,134 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.column-layout {
+  display: flex;
+  flex-direction: column;
+}
+.group {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.row-layout {
+  display: flex;
+}
+.group_1 {
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_2 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  width: 537px;
+  height: 441px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 537px;
+  max-height: 441px;
+}
+.group_3 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+}
+.group_4 {
+  justify-content: flex-end;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_5 {
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_6 {
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  margin: 8px;
+  min-width: 50px;
+  min-height: 50px;
+}
+.group_7 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  width: 451px;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 451px;
+}
+.text {
+  height: max-content;
+  min-width: min-content;
+}
+.image {
+  object-fit: scale-down;
+  width: 207px;
+  height: 114px;
+  min-width: 0;
+  min-height: 0;
+  max-width: 207px;
+  max-height: 114px;
+  flex-shrink: 0;
+}
+.hyperlink {
+  text-align: right;
+  color: var(--ig-info-500);
+  margin: 8px;
+  height: max-content;
+  min-width: min-content;
+}
+.username {
+  margin: 8px;
+  height: max-content;
+  min-width: min-content;
+}
+.checkbox {
+  margin: 8px;
+  width: max-content;
+  height: max-content;
+}
+.button {
+  --ig-size: var(--ig-size-medium);
+  margin: 8px;
+  height: max-content;
+  flex-shrink: 0;
+}
+.button_1 {
+  --ig-size: var(--ig-size-medium);
+  height: max-content;
+}

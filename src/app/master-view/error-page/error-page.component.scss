@@ -1,0 +1,71 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.column-layout {
+  display: flex;
+  flex-direction: column;
+}
+.group {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.row-layout {
+  display: flex;
+}
+.group_1 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  height: 73px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 73px;
+}
+.group_2 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
+  height: 974px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 974px;
+}
+.group_3 {
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
+  margin: 8px;
+  height: 65px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 65px;
+}
+.h3 {
+  height: max-content;
+  min-width: min-content;
+}
+.error-text {
+  height: max-content;
+  min-width: min-content;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.button {
+  --ig-size: var(--ig-size-medium);
+  height: max-content;
+  flex-shrink: 0;
+}
