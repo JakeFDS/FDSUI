@@ -2,11 +2,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IGX_TABS_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { UspNutrientIngredientValuesSelectMainEightResult } from '../../models/npro/usp-nutrient-ingredient-values-select-main-eight-result';
-import { UspNutrientIngredientValuesVisibleSelectResult } from '../../models/npro/usp-nutrient-ingredient-values-visible-select-result';
-import { Allergen } from '../../models/npro/allergen';
 import { UspNutrientIngredientValuesSelectVitaminsResult } from '../../models/npro/usp-nutrient-ingredient-values-select-vitamins-result';
 import { CustomerType } from '../../models/customer/customer-type';
+import { Allergen } from '../../models/npro/allergen';
+import { UspNutrientIngredientValuesVisibleSelectResult } from '../../models/npro/usp-nutrient-ingredient-values-visible-select-result';
+import { UspNutrientIngredientValuesSelectMainEightResult } from '../../models/npro/usp-nutrient-ingredient-values-select-main-eight-result';
 import { NProService } from '../../services/npro.service';
 
 @Component({
@@ -21,12 +21,12 @@ export class IngredientAddEditComponent implements OnInit, OnDestroy {
   public internalReference?: string;
   public displayName?: string;
 
-  private _ingredientId1?: string;
+  private _ingredientId1: string = 'Null';
   @Input()
-  public get ingredientId1(): string | undefined {
-    return this._ingredientId1;
+  public get ingredientId1(): string {
+    return this._ingredientId1 ?? 'Null';
   }
-  public set ingredientId1(value: string | undefined) {
+  public set ingredientId1(value: string) {
     this._ingredientId1 = value;
     this.nProUspNutrientIngredientValuesSelectMainEightResult$.next();
     this.nProUspNutrientIngredientValuesSelectVitaminsResult$.next();
@@ -77,21 +77,21 @@ export class IngredientAddEditComponent implements OnInit, OnDestroy {
   constructor(private nProService: NProService) { }
 
   ngOnInit() {
-    this.nProService.getUspNutrientIngredientValuesSelectMainEightResultList(this.ingredientId1 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesSelectMainEightResult = data);
+    this.nProService.getUspNutrientIngredientValuesSelectMainEightResultList(this.ingredientId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesSelectMainEightResult = data);
     this.nProUspNutrientIngredientValuesSelectMainEightResult$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.nProService.getUspNutrientIngredientValuesSelectMainEightResultList(this.ingredientId1 as any).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesSelectMainEightResult = data);
+      this.nProService.getUspNutrientIngredientValuesSelectMainEightResultList(this.ingredientId1).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesSelectMainEightResult = data);
     });
-    this.nProService.getUspNutrientIngredientValuesSelectVitaminsResultList(this.ingredientId1 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesSelectVitaminsResult = data);
+    this.nProService.getUspNutrientIngredientValuesSelectVitaminsResultList(this.ingredientId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesSelectVitaminsResult = data);
     this.nProUspNutrientIngredientValuesSelectVitaminsResult$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.nProService.getUspNutrientIngredientValuesSelectVitaminsResultList(this.ingredientId1 as any).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesSelectVitaminsResult = data);
+      this.nProService.getUspNutrientIngredientValuesSelectVitaminsResultList(this.ingredientId1).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesSelectVitaminsResult = data);
     });
-    this.nProService.getUspNutrientIngredientValuesVisibleSelectResultList(this.ingredientId1 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesVisibleSelectResult = data);
+    this.nProService.getUspNutrientIngredientValuesVisibleSelectResultList(this.ingredientId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspNutrientIngredientValuesVisibleSelectResult = data);
     this.nProUspNutrientIngredientValuesVisibleSelectResult$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.nProService.getUspNutrientIngredientValuesVisibleSelectResultList(this.ingredientId1 as any).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesVisibleSelectResult = data);
+      this.nProService.getUspNutrientIngredientValuesVisibleSelectResultList(this.ingredientId1).pipe(take(1)).subscribe(data => this.nProUspNutrientIngredientValuesVisibleSelectResult = data);
     });
-    this.nProService.getAllergenList1(this.ingredientId1 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProAllergen = data);
+    this.nProService.getAllergenList1(this.ingredientId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProAllergen = data);
     this.nProAllergen$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.nProService.getAllergenList1(this.ingredientId1 as any).pipe(take(1)).subscribe(data => this.nProAllergen = data);
+      this.nProService.getAllergenList1(this.ingredientId1).pipe(take(1)).subscribe(data => this.nProAllergen = data);
     });
   }
 

@@ -1,5 +1,5 @@
-import { NutrientIngredientValue } from './nutrient-ingredient-value';
 import { AllergenIngredient } from './allergen-ingredient';
+import { NutrientIngredientValue } from './nutrient-ingredient-value';
 
 export interface NewIngredient {
   displayName: string;

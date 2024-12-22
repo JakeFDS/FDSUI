@@ -51,4 +51,8 @@ export class RecipeSearchComponent implements OnInit, OnDestroy {
     this.nProUspGetRecipesResult$.complete();
     this.destroy$.complete();
   }
+
+  public buttonClick() {
+    this.searchTerm1 = this.searchTerm1;
+  }
 }

@@ -52,11 +52,9 @@
   border-width: 2px;
   border-style: solid;
   border-radius: 25px;
-  flex-wrap: wrap-reverse;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
-  overflow: hidden;
   position: relative;
   min-width: 266px;
   min-height: 280px;
@@ -100,18 +98,33 @@
   flex-basis: 0;
 }
 .group_7 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
   flex-wrap: wrap-reverse;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   overflow: hidden;
   position: relative;
+  min-width: 266px;
+  min-height: 280px;
+  align-self: stretch;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.group_8 {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  position: relative;
   height: 503px;
   min-width: 250px;
   min-height: 378px;
   max-height: 503px;
 }
-.group_8 {
+.group_9 {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
@@ -125,7 +138,7 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_9 {
+.group_10 {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;

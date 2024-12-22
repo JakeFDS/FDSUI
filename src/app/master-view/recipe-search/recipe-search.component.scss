@@ -76,7 +76,6 @@
   flex-basis: 0;
 }
 .group_6 {
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
@@ -121,6 +120,7 @@
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
+  overflow: auto;
   position: relative;
   width: 560px;
   min-width: 430px;
