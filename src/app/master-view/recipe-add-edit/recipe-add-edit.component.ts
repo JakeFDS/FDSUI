@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IGX_SIMPLE_COMBO_DIRECTIVES, IGX_TABS_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { Allergen } from '../../models/npro/allergen';
-import { UspRecipeTypeSelectAllOrganisationResult } from '../../models/npro/usp-recipe-type-select-all-organisation-result';
-import { UspUnitOfMeasureSelectResult } from '../../models/npro/usp-unit-of-measure-select-result';
-import { UspSugarTaxResult } from '../../models/npro/usp-sugar-tax-result';
 import { UspHeatScaleSelectResult } from '../../models/npro/usp-heat-scale-select-result';
+import { UspRecipeTypeSelectAllOrganisationResult } from '../../models/npro/usp-recipe-type-select-all-organisation-result';
+import { Allergen } from '../../models/npro/allergen';
 import { UspRecipeGroupSelectResult } from '../../models/npro/usp-recipe-group-select-result';
+import { UspSugarTaxResult } from '../../models/npro/usp-sugar-tax-result';
 import { UspGetIngredientsResult } from '../../models/npro/usp-get-ingredients-result';
+import { UspUnitOfMeasureSelectResult } from '../../models/npro/usp-unit-of-measure-select-result';
 import { NProService } from '../../services/npro.service';
 
 @Component({
@@ -22,12 +22,12 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public recommendedPortionWeight?: number;
 
-  private _recipeId1?: string;
+  private _recipeId1: string = 'Null';
   @Input()
-  public get recipeId1(): string | undefined {
-    return this._recipeId1;
+  public get recipeId1(): string {
+    return this._recipeId1 ?? 'Null';
   }
-  public set recipeId1(value: string | undefined) {
+  public set recipeId1(value: string) {
     this._recipeId1 = value;
     this.nProAllergen$.next();
   }
@@ -92,9 +92,9 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
     this.nProService.getUspRecipeTypeSelectAllOrganisationResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspRecipeTypeSelectAllOrganisationResult = data);
     this.nProService.getUspHeatScaleSelectResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspHeatScaleSelectResult = data);
     this.nProService.getUspUnitOfMeasureSelectResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspUnitOfMeasureSelectResult = data);
-    this.nProService.getAllergenList2(this.recipeId1 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProAllergen = data);
+    this.nProService.getAllergenList2(this.recipeId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProAllergen = data);
     this.nProAllergen$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.nProService.getAllergenList2(this.recipeId1 as any).pipe(take(1)).subscribe(data => this.nProAllergen = data);
+      this.nProService.getAllergenList2(this.recipeId1).pipe(take(1)).subscribe(data => this.nProAllergen = data);
     });
     this.nProService.getUspGetIngredientsResultList(this.searchTerm2 as any).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspGetIngredientsResult1 = data);
     this.nProUspGetIngredientsResult1$.pipe(takeUntil(this.destroy$)).subscribe(() => {
