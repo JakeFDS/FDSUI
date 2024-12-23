@@ -26,10 +26,10 @@
 }
 .ingredient-image {
   object-fit: scale-down;
+  height: 224px;
   min-width: 0;
   min-height: 0;
-  flex-grow: 1;
-  flex-basis: 0;
+  max-height: 224px;
 }
 .icon {
   --size: 24px;
@@ -145,56 +145,19 @@
   flex-basis: 0;
 }
 .group_7 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   gap: 24px;
   position: relative;
-  width: 500px;
   min-width: 380px;
   min-height: 280px;
-  max-width: 500px;
 }
 .group_8 {
-  border-color: var(--ig-gray-200);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 680px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_9 {
-  border-color: gray;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  width: 560px;
-  min-width: 430px;
-  min-height: 50px;
-  max-width: 560px;
-}
-.group_10 {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  height: 223px;
-  min-width: 50px;
-  min-height: 50px;
-  max-height: 223px;
-  align-self: stretch;
-}
-.group_11 {
   justify-content: flex-end;
   align-items: stretch;
   align-content: flex-start;
@@ -206,7 +169,7 @@
   min-height: 50px;
   max-height: 66px;
 }
-.group_12 {
+.group_9 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -217,7 +180,11 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_13 {
+.group_10 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -225,35 +192,6 @@
   position: relative;
   min-width: 280px;
   min-height: 280px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_14 {
-  border-color: var(--ig-gray-200);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 680px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_15 {
-  border-color: gray;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-  align-self: stretch;
   flex-grow: 1;
   flex-basis: 0;
 }
@@ -267,7 +205,7 @@
 .tab-item {
   min-width: 100%;
 }
-.group_16 {
+.group_11 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -279,7 +217,7 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_17 {
+.group_12 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -289,7 +227,7 @@
   min-height: 50px;
   max-height: 107px;
 }
-.group_18 {
+.group_13 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -300,6 +238,13 @@
   max-width: 148px;
 }
 .grid-main-eight {
+  --ig-size: var(--ig-size-medium);
+  z-index: 1;
+  position: sticky;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.grid {
   --ig-size: var(--ig-size-medium);
   min-width: 600px;
   min-height: 300px;

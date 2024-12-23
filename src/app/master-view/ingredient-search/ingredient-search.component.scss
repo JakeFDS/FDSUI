@@ -78,10 +78,12 @@
   flex-basis: 0;
 }
 .group_6 {
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
   gap: 16px;
+  overflow: auto;
   position: relative;
   padding: 16px;
   min-width: 280px;
@@ -90,78 +92,41 @@
   flex-basis: 0;
 }
 .group_7 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   gap: 24px;
   position: relative;
-  width: 500px;
-  min-width: 430px;
+  min-width: 380px;
   min-height: 280px;
-  max-width: 500px;
 }
 .group_8 {
-  border-color: var(--ig-gray-200);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_9 {
-  border-color: var(--ig-gray-200);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  width: 560px;
-  min-width: 430px;
-  min-height: 50px;
-  max-width: 560px;
-}
-.group_10 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   gap: 0;
   position: relative;
-  padding: 8px 0 0;
-  height: 86px;
-  min-width: 50px;
+  min-width: min-content;
   min-height: 50px;
-  max-height: 86px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
-.group_11 {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  height: 82px;
-  min-width: 50px;
-  min-height: 50px;
-  max-height: 82px;
-}
-.group_12 {
+.group_9 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   overflow: auto;
   position: relative;
-  min-width: 50px;
+  min-width: min-content;
   min-height: 50px;
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_13 {
+.group_10 {
   justify-content: flex-end;
   align-items: stretch;
   align-content: flex-start;
@@ -169,7 +134,7 @@
   min-width: 50px;
   min-height: 50px;
 }
-.group_14 {
+.group_11 {
   border-color: var(--ig-gray-200);
   border-width: 2px;
   border-style: solid;
@@ -196,7 +161,7 @@
 }
 .text {
   color: gray;
-  margin: 8px 0 0 16px;
+  margin: 0 0 0 16px;
   height: max-content;
   min-width: min-content;
 }
@@ -206,13 +171,19 @@
   height: max-content;
   flex-shrink: 0;
 }
-.user-input {
-  margin: 0 0 0 16px;
+.search-term {
+  margin: 8px 16px 0;
   width: 390px;
   height: max-content;
   min-width: min-content;
   max-width: 390px;
-  flex-shrink: 0;
+}
+.library {
+  margin: 0 16px;
+  width: 390px;
+  height: max-content;
+  min-width: min-content;
+  max-width: 390px;
 }
 .switch {
   margin: 4px 8px 4px 24px;
@@ -235,7 +206,7 @@
   --ig-size: var(--ig-size-medium);
   margin: 16px;
   min-width: 280px;
-  min-height: 300px;
+  min-height: 400px;
   flex-grow: 1;
   flex-basis: 0;
 }

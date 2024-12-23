@@ -76,10 +76,12 @@
   flex-basis: 0;
 }
 .group_6 {
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
   gap: 8px;
+  overflow: auto;
   position: relative;
   padding: 8px;
   min-width: 280px;

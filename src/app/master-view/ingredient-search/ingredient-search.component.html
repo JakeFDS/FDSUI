@@ -22,48 +22,40 @@
   <div class="column-layout group_5">
     <div class="row-layout group_6">
       <div class="column-layout group_7">
+        <igx-input-group type="border" class="search-term">
+          <igx-suffix>
+            <igx-icon class="icon">
+              clear
+            </igx-icon>
+          </igx-suffix>
+          <input type="text" [value]="searchTerm!" igxInput />
+          <label igxLabel>Search for</label>
+        </igx-input-group>
+        <igx-combo type="border" [data]="nProUspLibrarySelectAllOrganisationResult" valueKey="libraryId" displayKey="lIbraryName" class="library">
+          <label igxLabel>In Library</label>
+        </igx-combo>
+        <p class="ig-typography__subtitle-1 text">
+          Exclude Allergens
+        </p>
         <div class="row-layout group_8">
           <div class="column-layout group_9">
-            <div class="row-layout group_10">
-              <igx-input-group type="border" class="user-input">
-                <igx-suffix>
-                  <igx-icon class="icon">
-                    clear
-                  </igx-icon>
-                </igx-suffix>
-                <input type="text" [value]="searchTerm!" igxInput />
-                <label igxLabel>Search for</label>
-              </igx-input-group>
-            </div>
-            <div class="row-layout group_11">
-              <igx-combo type="border" [data]="nProUspLibrarySelectAllOrganisationResult" valueKey="libraryId" displayKey="lIbraryName" class="user-input">
-                <label igxLabel>In Library</label>
-              </igx-combo>
-            </div>
-            <div class="row-layout group_3">
-              <div class="column-layout group_12">
-                <p class="ig-typography__subtitle-1 text">
-                  Exclude Allergens
-                </p>
-                @for (item of nProAllergen; track item) {
-                  <igx-switch class="switch">
-                    {{ item.allergenName }}
-                  </igx-switch>
-                }
-              </div>
-            </div>
-            <div class="row-layout group_13">
-              <button igxButton="outlined" type="button" igxRipple class="button_1">
-                Clear
-              </button>
-              <button igxButton="contained" type="button" igxRipple class="button_2">
-                Apply
-              </button>
-            </div>
+            @for (item of nProAllergen; track item) {
+              <igx-switch class="switch">
+                {{ item.allergenName }}
+              </igx-switch>
+            }
           </div>
         </div>
+        <div class="row-layout group_10">
+          <button igxButton="outlined" type="button" igxRipple class="button_1">
+            Clear
+          </button>
+          <button igxButton="contained" type="button" igxRipple class="button_2">
+            Apply
+          </button>
+        </div>
       </div>
-      <div class="column-layout group_14">
+      <div class="column-layout group_11">
         <igx-grid [data]="nProUspGetIngredientsResult" primaryKey="ingredientId" rowSelection="single" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="gridIngredientsRowSelectionChanging($event)" class="grid-ingredients">
           <igx-grid-toolbar>
             <igx-grid-toolbar-actions>
