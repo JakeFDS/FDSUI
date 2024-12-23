@@ -2,11 +2,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IGX_TABS_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
+import { UspNutrientIngredientValuesVisibleSelectResult } from '../../models/npro/usp-nutrient-ingredient-values-visible-select-result';
+import { Allergen } from '../../models/npro/allergen';
+import { UspNutrientIngredientValuesSelectMainEightResult } from '../../models/npro/usp-nutrient-ingredient-values-select-main-eight-result';
 import { UspNutrientIngredientValuesSelectVitaminsResult } from '../../models/npro/usp-nutrient-ingredient-values-select-vitamins-result';
 import { CustomerType } from '../../models/customer/customer-type';
-import { Allergen } from '../../models/npro/allergen';
-import { UspNutrientIngredientValuesVisibleSelectResult } from '../../models/npro/usp-nutrient-ingredient-values-visible-select-result';
-import { UspNutrientIngredientValuesSelectMainEightResult } from '../../models/npro/usp-nutrient-ingredient-values-select-main-eight-result';
 import { NProService } from '../../services/npro.service';
 
 @Component({

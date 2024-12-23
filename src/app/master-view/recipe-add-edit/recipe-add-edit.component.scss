@@ -25,10 +25,10 @@
 }
 .ingredient-image {
   object-fit: scale-down;
+  height: 224px;
   min-width: 0;
   min-height: 0;
-  flex-grow: 1;
-  flex-basis: 0;
+  max-height: 224px;
 }
 .icon {
   --size: 24px;
@@ -200,56 +200,18 @@
   flex-basis: 0;
 }
 .group_7 {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  gap: 24px;
-  position: relative;
-  width: 500px;
-  min-width: 430px;
-  min-height: 280px;
-  max-width: 500px;
-}
-.group_8 {
   border-color: var(--ig-gray-200);
   border-width: 2px;
   border-style: solid;
   border-radius: 25px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 480px;
-  min-height: 600px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_9 {
-  border-color: gray;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   position: relative;
-  width: 560px;
-  min-width: 430px;
-  min-height: 50px;
-  max-width: 560px;
+  min-width: 380px;
+  min-height: 280px;
 }
-.group_10 {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  height: 223px;
-  min-width: 50px;
-  min-height: 50px;
-  max-height: 223px;
-  align-self: stretch;
-}
-.group_11 {
+.group_8 {
   justify-content: flex-end;
   align-items: stretch;
   align-content: flex-start;
@@ -259,7 +221,7 @@
   min-width: 50px;
   min-height: 50px;
 }
-.group_12 {
+.group_9 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -270,15 +232,11 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_13 {
-  justify-content: flex-end;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-}
-.group_14 {
+.group_10 {
+  border-color: var(--ig-gray-200);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -289,46 +247,17 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_15 {
-  border-color: var(--ig-gray-200);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 680px;
-  flex-grow: 1;
-  flex-basis: 0;
-}
-.group_16 {
-  border-color: gray;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  justify-content: center;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-  align-self: stretch;
-  flex-grow: 1;
-  flex-basis: 0;
-}
 .tabs {
   margin: 16px;
   min-width: 0;
-  min-height: 0;
+  min-height: 600px;
   flex-grow: 1;
   flex-basis: 0;
 }
 .tab-item {
   min-width: 100%;
 }
-.group_17 {
+.group_11 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -337,7 +266,7 @@
   min-width: 50px;
   min-height: 50px;
 }
-.group_18 {
+.group_12 {
   justify-content: center;
   align-items: stretch;
   align-content: flex-start;
@@ -347,7 +276,7 @@
   min-height: 50px;
   max-width: 214px;
 }
-.group_19 {
+.group_13 {
   justify-content: center;
   align-items: stretch;
   align-content: flex-start;
@@ -357,7 +286,7 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-.group_20 {
+.group_14 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -367,7 +296,7 @@
   min-height: 50px;
   max-height: 205px;
 }
-.group_21 {
+.group_15 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -377,19 +306,19 @@
   min-height: 50px;
   max-height: 562px;
 }
-.group_22 {
+.group_16 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
   position: relative;
   width: 594px;
   height: 610px;
-  min-width: 400px;
+  min-width: 300px;
   min-height: 50px;
   max-width: 594px;
   max-height: 610px;
 }
-.group_23 {
+.group_17 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -401,7 +330,7 @@
   min-height: 50px;
   max-height: 83px;
 }
-.group_24 {
+.group_18 {
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
@@ -415,12 +344,20 @@
 }
 .grid {
   --ig-size: var(--ig-size-medium);
+  margin: 8px;
+  min-width: 500px;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.grid_1 {
+  --ig-size: var(--ig-size-medium);
   min-width: 600px;
   min-height: 300px;
   flex-grow: 1;
   flex-basis: 0;
 }
-.grid_1 {
+.grid_2 {
   --ig-size: var(--ig-size-medium);
   margin: 4px;
   min-width: 270px;

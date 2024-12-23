@@ -14,6 +14,7 @@
   overflow: auto;
   position: relative;
   flex-grow: 1;
+  flex-basis: 0;
 }
 .navbar-content {
   gap: 1rem;
@@ -22,47 +23,9 @@
   --igx-avatar-background: transparent;
   margin: 0 8px 0 0;
 }
-.h5 {
-  color: var(--ig-gray-200);
-  margin: 24px;
-  height: max-content;
-  min-width: min-content;
-}
-.h5_1 {
-  text-align: right;
-  color: var(--ig-gray-200);
-  margin: 24px;
-  height: max-content;
-  min-width: min-content;
-}
 .button {
   --igx-button-foreground: var(--ig-gray-900);
   --ig-size: var(--ig-size-medium);
   margin: 0 8px 0 0;
   height: max-content;
-}
-.row-layout {
-  display: flex;
-}
-.footer {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-}
-.column-layout {
-  display: flex;
-  flex-direction: column;
-}
-.footer-right {
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-  flex-grow: 1;
-  flex-basis: 0;
 }
