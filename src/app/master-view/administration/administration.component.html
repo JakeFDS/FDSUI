@@ -281,7 +281,7 @@
     <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogIngredientGroupLibrary" class="cancel">
       Cancel
     </button>
-    <button igxButton="contained" type="button" igxRipple class="cancel">
+    <button igxButton="contained" type="button" (click)="saveIngredientGroup()" igxRipple class="cancel">
       Save
     </button>
   </igx-dialog-actions>

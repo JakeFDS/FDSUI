@@ -69,7 +69,7 @@
       <button igxButton="contained" type="button" igxRipple [igxToggleAction]="dialogConfirmDelete" class="button">
         Delete
       </button>
-      <button igxButton="contained" type="button" igxRipple class="button">
+      <button (click)="saveRecipe()" igxButton="contained" type="button" igxRipple class="button">
         Save
       </button>
     </div>
@@ -107,7 +107,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="reference!" placeholder="Reference" required igxInput />
+                    <input type="text" [(ngModel)]="nProGetRecipeResult.reference" placeholder="Reference" required igxInput />
                     <label igxLabel>Reference</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="reference">
@@ -116,7 +116,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="recipeName!" placeholder="Recipe Name" required igxInput />
+                    <input type="text" [(ngModel)]="nProGetRecipeResult.recipeName" placeholder="Recipe Name" required igxInput />
                     <label igxLabel>Recipe Name</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="reference">
@@ -125,7 +125,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="revision!" placeholder="Revision" required igxInput />
+                    <input type="text" [(ngModel)]="nProGetRecipeResult.revision" placeholder="Revision" required igxInput />
                     <label igxLabel>Revision</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="reference">
@@ -134,7 +134,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="portionCount!" placeholder="Portion Count" required igxInput />
+                    <input type="text" [(ngModel)]="nProGetRecipeResult.portionCount" (ngModelChange)="updatePortionSize()" placeholder="Portion Count" required igxInput />
                     <label igxLabel>Portion Count</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="reference">
@@ -143,7 +143,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="recommendedPortionWeight!" placeholder="Portion Size" required igxInput />
+                    <input type="text" [(ngModel)]="nProGetRecipeResult.recommendedPortionWeight" (ngModelChange)="updateTotalPortions()" placeholder="Portion Size" required igxInput />
                     <label igxLabel>Portion Size</label>
                   </igx-input-group>
                 </div>
@@ -161,7 +161,7 @@
                     <span igxTabHeaderLabel>Ingredients</span>
                   </igx-tab-header>
                   <igx-tab-content class="row-layout tab-item-content">
-                    <igx-grid [data]="nProUspGetIngredientsResult" primaryKey="ingredientId" rowSelection="multiple" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid">
+                    <igx-grid [data]="nProGetRecipeResult.recipeLine" (cellEditDone)="editDone($event)" primaryKey="ingredientId" rowSelection="multiple" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid">
                       <igx-grid-toolbar>
                         <igx-grid-toolbar-actions>
                           <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>
@@ -171,13 +171,14 @@
                       @if (columnVisible) {
                         <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
-                      <igx-column field="foodCode" dataType="string" header="Food Code" width="184px" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
-                      <igx-column field="internalReference" dataType="string" header="Internal Reference" width="183px" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="ingredientName" dataType="string" header="Ingredient Name" width="184px" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="quantity" [editable]="true" dataType="number" header="Qty(g/ml)" width="183px" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="costPerKilo" [editable]="true" dataType="currency" header="Cost/kg" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+
                       @if (columnVisible1) {
                         <igx-column field="foodName" dataType="string" header="foodName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
-                      <igx-column field="displayName" dataType="string" header="Ingredient" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
-                      <igx-column field="costPerKilo" dataType="number" header="Cost/kg" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="liquid" dataType="boolean" [editable]="true"  header="Is Liquid" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       @if (columnVisible2) {
                         <igx-column field="groupName" dataType="string" header="groupName" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
@@ -207,8 +208,8 @@
                                 clear
                               </igx-icon>
                             </igx-suffix>
-                            <input type="number" [(ngModel)]="portionCount" placeholder="Portion Count" required igxInput />
-                            <label igxLabel>Duration</label>
+                            <input type="number" [(ngModel)]="nProGetRecipeResult.portionCount" (ngModelChange)="updatePortionSize()" placeholder="Portion Count" required igxInput />
+                            <label igxLabel>Portion Count</label>
                           </igx-input-group>
                           <igx-input-group type="border" class="reference">
                             <igx-suffix>
@@ -216,7 +217,7 @@
                                 clear
                               </igx-icon>
                             </igx-suffix>
-                            <input type="number" [(ngModel)]="recommendedPortionWeight" placeholder="Portion Size (g)" required igxInput />
+                            <input type="number" [(ngModel)]="nProGetRecipeResult.recommendedPortionWeight" (ngModelChange)="updateTotalPortions()" placeholder="Portion Size (g)" required igxInput />
                             <label igxLabel>Portion Size</label>
                           </igx-input-group>
                           <igx-input-group type="border" class="reference">
@@ -225,17 +226,17 @@
                                 clear
                               </igx-icon>
                             </igx-suffix>
-                            <input type="number" [(ngModel)]="addedSugar" placeholder="Added Sugar per Portion (g)" required igxInput />
+                            <input type="number" [(ngModel)]="nProGetRecipeResult.addedSugar" placeholder="Added Sugar per Portion (g)" required igxInput />
                             <label igxLabel>Added Sugar</label>
                           </igx-input-group>
                           <div class="row-layout group_17">
                             <div class="column-layout group_18">
-                              <igx-switch labelPosition="before" [(ngModel)]="sugarTaxApplies" class="switch">
+                              <igx-switch labelPosition="before" [(ngModel)]="nProGetRecipeResult.sugarTaxApplies" class="switch">
                                 Sugar Tax Applies
                               </igx-switch>
                             </div>
                             <div class="column-layout group_19">
-                              <igx-simple-combo type="border" [data]="nProUspSugarTaxResult" placeholder="Sugar Tax Band" valueKey="sugarTaxId" displayKey="taxBand" class="single-select-combo"></igx-simple-combo>
+                              <igx-simple-combo [disabled]="!nProGetRecipeResult.sugarTaxApplies" type="border" [(ngModel)]="nProGetRecipeResult.sugarTaxId" [data]="nProUspSugarTaxResult" placeholder="Sugar Tax Band" valueKey="sugarTaxId" displayKey="taxBand" class="single-select-combo"></igx-simple-combo>
                             </div>
                           </div>
                           <p class="ig-typography__subtitle-2 text">
@@ -244,7 +245,7 @@
                           <h5 class="h5_2">
                             Adjustment
                           </h5>
-                          <igx-switch [(ngModel)]="cookingLossAsMoisture" class="switch_1">
+                          <igx-switch [(ngModel)]="nProGetRecipeResult.cookingLossAsMoisture" (ngModelChange)="updateFinishedWeight()" class="switch_1">
                             Loss as moisture (toggle off to use weight loss)
                           </igx-switch>
                           <igx-input-group type="border" class="reference">
@@ -253,12 +254,12 @@
                                 clear
                               </igx-icon>
                             </igx-suffix>
-                            <input type="number" [(ngModel)]="cookingLoss" placeholder="Loss Value" required igxInput />
+                            <input type="number" [(ngModel)]="nProGetRecipeResult.cookingLoss" (ngModelChange)="updateFinishedWeight()" placeholder="Loss Value" required igxInput />
                             <label igxLabel>Cooking Loss</label>
                           </igx-input-group>
                           <igx-input-group type="border" class="reference">
-                            <input type="number" [(ngModel)]="totalWeight" placeholder="Recipe total weight" disabled="true" required igxInput />
-                            <label igxLabel>Duration</label>
+                            <input type="number" [(ngModel)]="nProGetRecipeResult.totalWeight" (ngModelChange)="updateFinishedWeight()"  placeholder="Recipe total weight" disabled="true" required igxInput />
+                            <label igxLabel>Total Weight</label>
                           </igx-input-group>
                           <igx-input-group type="border" class="reference">
                             <igx-suffix>
@@ -266,7 +267,7 @@
                                 clear
                               </igx-icon>
                             </igx-suffix>
-                            <input type="number" [(ngModel)]="finishedWeight" placeholder="Finished Weight" igxInput />
+                            <input type="number" (ngModelChange)="updateWeightLoss()" [(ngModel)]="nProGetRecipeResult.finishedWeight" placeholder="Finished Weight" igxInput />
                             <label igxLabel>Finished Weight</label>
                           </igx-input-group>
                         </div>
@@ -290,10 +291,10 @@
                           </igx-simple-combo>
                         </div>
                         <div class="column-layout group_2">
-                          <igx-simple-combo type="border" [data]="nProUspHeatScaleSelectResult" placeholder="Heat Scale" [ngModel]="heatScaleId!" valueKey="heatScaleId" displayKey="heatName" class="single-select-combo_1">
+                          <igx-simple-combo type="border" [(ngModel)]="nProGetRecipeResult.heatScaleId" [data]="nProUspHeatScaleSelectResult" placeholder="Heat Scale" [ngModel]="heatScaleId!" valueKey="heatScaleId" displayKey="heatName" class="single-select-combo_1">
                             <label igxLabel>Heat Scale</label>
                           </igx-simple-combo>
-                          <igx-simple-combo type="border" [data]="nProUspUnitOfMeasureSelectResult" placeholder="Unit" displayKey="unitOfMeasurementId" class="single-select-combo_2">
+                          <igx-simple-combo type="border" [(ngModel)]="nProGetRecipeResult.unitOfMeasurementId" [data]="nProUspUnitOfMeasureSelectResult" placeholder="Unit" displayKey="unitOfMeasurementId" class="single-select-combo_2">
                             <label igxLabel>Unit</label>
                           </igx-simple-combo>
                         </div>
@@ -333,7 +334,7 @@
                       @if (columnVisible10) {
                         <igx-column field="internalReference" dataType="string" header="internalReference" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
-                      <igx-column field="included" dataType="boolean" header="Present" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="included" [editable]="false"  dataType="boolean" header="Present" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                     </igx-grid>
                   </igx-tab-content>
                 </igx-tab-item>
@@ -355,12 +356,12 @@
     <div class="column-layout group_22">
       <div class="row-layout group_23">
         <igx-input-group type="border" class="input">
-          <input type="text" [value]="searchTerm2!" igxInput />
+          <input type="text" [(ngModel)]="searchTerm2!" igxInput />
           <label igxLabel>Search</label>
         </igx-input-group>
       </div>
       <div class="row-layout group_24">
-        <igx-grid [data]="nProUspGetIngredientsResult1" primaryKey="ingredientId" rowSelection="multiple" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid_1">
+        <igx-grid [data]="nProUspGetIngredientsResult1" primaryKey="ingredientId" rowSelection="single" (rowSelectionChanging)="gridIngredientsRowSelectionChanging($event)" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid_1">
           @if (columnVisible11) {
             <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
           }
@@ -384,9 +385,9 @@
   </ng-container>
   <igx-dialog-actions>
     <button igxButton="flat" type="button" igxRipple [igxToggleAction]="dialogAddIngredient" class="button_3">
-      Cancel
+      Close
     </button>
-    <button igxButton="contained" type="button" igxRipple class="button_3">
+    <button igxButton="contained" type="button" (click)="addIngredient()" igxRipple class="button_3">
       Add to recipe
     </button>
   </igx-dialog-actions>

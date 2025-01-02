@@ -31,7 +31,7 @@
                     clear
                   </igx-icon>
                 </igx-suffix>
-                <input type="text" [value]="searchTerm!" igxInput />
+                <input type="text" [(ngModel)]="searchTerm" igxInput />
                 <label igxLabel>Search for</label>
               </igx-input-group>
             </div>
@@ -56,7 +56,7 @@
               <button igxButton="outlined" type="button" igxRipple class="button_1">
                 Clear
               </button>
-              <button igxButton="contained" type="button" igxRipple class="button_2">
+              <button igxButton="contained" (click)="searchIngredients()" type="button" igxRipple class="button_2">
                 Apply
               </button>
             </div>

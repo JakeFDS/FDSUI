@@ -66,7 +66,7 @@
       <button igxButton="contained" type="button" igxRipple [igxToggleAction]="dialogDeleteIngredients" class="button">
         Delete
       </button>
-      <button igxButton="contained" type="button" igxRipple class="button">
+      <button igxButton="contained" type="button" (click)="saveIngredient()" igxRipple class="button">
         Save
       </button>
     </div>
@@ -104,7 +104,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="foodCode!" placeholder="17-208" required igxInput />
+                    <input type="text" [(ngModel)]="foodCode"  required igxInput />
                     <label igxLabel>Food code</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="food-code-5">
@@ -113,7 +113,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="internalReference!" placeholder="Beer001" required igxInput />
+                    <input type="text" [(ngModel)]="internalReference"  required igxInput />
                     <label igxLabel>Internal reference</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="food-code-5">
@@ -122,7 +122,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="foodName!" placeholder="Beer, bitter, best, premium" required igxInput />
+                    <input type="text" [(ngModel)]="foodName"  required igxInput />
                     <label igxLabel>Food name</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="food-code-5">
@@ -131,7 +131,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="text" [value]="displayName!" placeholder="Best Bitter" required igxInput />
+                    <input type="text" [(ngModel)]="displayName"  required igxInput />
                     <label igxLabel>Display name</label>
                   </igx-input-group>
                   <igx-input-group type="border" class="food-code-5">
@@ -140,7 +140,7 @@
                         clear
                       </igx-icon>
                     </igx-suffix>
-                    <input type="number" placeholder="Cost per Kilo/Litre" required igxInput [(ngModel)]="value" />
+                    <input type="number"  required igxInput [(ngModel)]="costPerKilo" />
                     <label igxLabel>Cost per Kilo/Litre</label>
                   </igx-input-group>
                 </div>
@@ -157,7 +157,7 @@
                     <span igxTabHeaderLabel>Main Eight</span>
                   </igx-tab-header>
                   <igx-tab-content class="row-layout tab-item-content">
-                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectMainEightResult" primaryKey="ingredientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectMainEightResult" primaryKey="nutrientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
                       <igx-grid-toolbar>
                         <igx-grid-toolbar-actions>
                           <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
@@ -175,7 +175,7 @@
                         <igx-column field="displayOrder" dataType="number" header="displayOrder" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
                       <igx-column field="label" dataType="string" header="Name" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
-                      <igx-column field="nutrientValue" dataType="number" header="Value" width="297px" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue"  header="Value" width="297px" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       <igx-column field="unitOfMeasurement" dataType="string" header="Unit" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       @if (columnVisible3) {
                         <igx-column field="abbreviation" dataType="string" header="abbreviation" [editable]="true" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
@@ -188,7 +188,7 @@
                     <span igxTabHeaderLabel>Vitamins</span>
                   </igx-tab-header>
                   <igx-tab-content class="row-layout tab-item-content">
-                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectVitaminsResult" primaryKey="ingredientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesSelectVitaminsResult" primaryKey="nutrientId" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
                       @if (columnVisible4) {
                         <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
@@ -199,7 +199,7 @@
                         <igx-column field="displayOrder" dataType="number" header="displayOrder" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
                       <igx-column field="label" dataType="string" header="Name" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
-                      <igx-column field="nutrientValue" dataType="number" header="Value" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue"  header="Value" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       <igx-column field="unitOfMeasurement" dataType="string" header="Unit" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       @if (columnVisible7) {
                         <igx-column field="abbreviation" dataType="string" header="abbreviation" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
@@ -212,7 +212,7 @@
                     <span igxTabHeaderLabel>All</span>
                   </igx-tab-header>
                   <igx-tab-content class="row-layout tab-item-content">
-                    <igx-grid [data]="nProUspNutrientIngredientValuesVisibleSelectResult" primaryKey="ingredientId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
+                    <igx-grid [data]="nProUspNutrientIngredientValuesVisibleSelectResult" primaryKey="nutrientId" [rowEditable]="true" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-main-eight">
                       <igx-paginator [perPage]="10"></igx-paginator>
                       @if (columnVisible8) {
                         <igx-column field="ingredientId" dataType="string" header="ingredientId" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
@@ -224,7 +224,7 @@
                         <igx-column field="displayOrder" dataType="number" header="displayOrder" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       }
                       <igx-column field="label" dataType="string" header="label" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
-                      <igx-column field="nutrientValue" dataType="number" header="nutrientValue" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
+                      <igx-column field="nutrientValue"  header="nutrientValue" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                       <igx-column field="unitOfMeasurement" dataType="string" header="unitOfMeasurement" [filterable]="true" [sortable]="true" [selectable]="false"></igx-column>
                     </igx-grid>
                   </igx-tab-content>
@@ -274,8 +274,8 @@
                               clear
                             </igx-icon>
                           </igx-suffix>
-                          <input type="number" [value]="edibleProportion" placeholder="1" required igxInput />
-                          <label igxLabel>EdibleProportion</label>
+                          <input type="number" [(ngModel)]="edibleProportion" placeholder="1" required igxInput />
+                          <label igxLabel>Edible Proportion</label>
                         </igx-input-group>
                         <igx-input-group type="border" class="food-code-5">
                           <igx-suffix>
@@ -283,7 +283,7 @@
                               clear
                             </igx-icon>
                           </igx-suffix>
-                          <input type="number" [value]="totalSolids" placeholder="0" required igxInput />
+                          <input type="number" [(ngModel)]="totalSolids" placeholder="0" required igxInput />
                           <label igxLabel>Total solids</label>
                         </igx-input-group>
                         <igx-input-group type="border" class="food-code-5">
@@ -292,7 +292,7 @@
                               clear
                             </igx-icon>
                           </igx-suffix>
-                          <input type="number" [value]="nitrogenConversionFactor" placeholder="6.25" required igxInput />
+                          <input type="number" [(ngModel)]="nitrogenConversionFactor" placeholder="6.25" required igxInput />
                           <label igxLabel>Nitrogen Conversion factor</label>
                         </igx-input-group>
                         <igx-input-group type="border" class="food-code-5">
@@ -301,7 +301,7 @@
                               clear
                             </igx-icon>
                           </igx-suffix>
-                          <input type="number" [value]="glycerolConversionFactor" placeholder="0" required igxInput />
+                          <input type="number" [(ngModel)]="glycerolConversionFactor" placeholder="0" required igxInput />
                           <label igxLabel>Glycerol Conversion factor</label>
                         </igx-input-group>
                         <div class="row-layout group_17">

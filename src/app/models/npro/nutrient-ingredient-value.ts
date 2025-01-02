@@ -1,4 +1,4 @@
 export interface NutrientIngredientValue {
   nutrientId: string;
-  nutrientValue: number;
+  nutrientValue: number | string;
 }

@@ -1,7 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { IGX_COMBO_DIRECTIVES, IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
+import {
+  IGX_COMBO_DIRECTIVES,
+  IGX_DIALOG_DIRECTIVES,
+  IGX_GRID_DIRECTIVES,
+  IGX_INPUT_GROUP_DIRECTIVES,
+  IgxButtonDirective,
+  IgxIconComponent,
+  IgxOverlayOutletDirective,
+  IgxRippleDirective,
+  IgxToggleActionDirective,
+  IgxToggleDirective,
+  IRowSelectionEventArgs
+} from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
 import { UspRecipeTypeSelectAllOrganisationResult } from '../../models/npro/usp-recipe-type-select-all-organisation-result';
 import { UspGetRecipesResult } from '../../models/npro/usp-get-recipes-result';
@@ -53,6 +65,14 @@ export class RecipeSearchComponent implements OnInit, OnDestroy {
   }
 
   public buttonClick() {
-    this.searchTerm1 = this.searchTerm1;
+    this.nProUspGetRecipesResult$.next();
+
   }
+
+
+
+  public gridIngredientsRowSelectionChanging(event: IRowSelectionEventArgs) {
+    this.recipeId = event.newSelection[0]?.recipeId as string;
+  }
+
 }

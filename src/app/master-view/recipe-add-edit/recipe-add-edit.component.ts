@@ -1,7 +1,21 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { IGX_DIALOG_DIRECTIVES, IGX_GRID_DIRECTIVES, IGX_INPUT_GROUP_DIRECTIVES, IGX_SIMPLE_COMBO_DIRECTIVES, IGX_TABS_DIRECTIVES, IgxButtonDirective, IgxIconComponent, IgxOverlayOutletDirective, IgxRippleDirective, IgxSwitchComponent, IgxToggleActionDirective, IgxToggleDirective } from '@infragistics/igniteui-angular';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {
+  IGX_DIALOG_DIRECTIVES,
+  IGX_GRID_DIRECTIVES,
+  IGX_INPUT_GROUP_DIRECTIVES,
+  IGX_SIMPLE_COMBO_DIRECTIVES,
+  IGX_TABS_DIRECTIVES,
+  IgxButtonDirective,
+  IgxIconComponent,
+  IgxOverlayOutletDirective,
+  IgxRippleDirective,
+  IgxSwitchComponent,
+  IgxToggleActionDirective,
+  IgxToggleDirective,
+  IRowSelectionEventArgs
+} from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
 import { UspHeatScaleSelectResult } from '../../models/npro/usp-heat-scale-select-result';
 import { UspRecipeTypeSelectAllOrganisationResult } from '../../models/npro/usp-recipe-type-select-all-organisation-result';
@@ -11,6 +25,7 @@ import { UspSugarTaxResult } from '../../models/npro/usp-sugar-tax-result';
 import { UspGetIngredientsResult } from '../../models/npro/usp-get-ingredients-result';
 import { UspUnitOfMeasureSelectResult } from '../../models/npro/usp-unit-of-measure-select-result';
 import { NProService } from '../../services/npro.service';
+import {Recipe, RecipeLine} from "../../models/npro/Recipe";
 
 @Component({
   selector: 'app-recipe-add-edit',
@@ -37,7 +52,7 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
   public recipeTypeId?: string;
   public portionCount?: number;
   public sugarTaxApplies: boolean = false;
-
+  public selectedIngredient?: UspGetIngredientsResult;
   private _searchTerm2?: string;
   public get searchTerm2(): string | undefined {
     return this._searchTerm2;
@@ -56,6 +71,7 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
   public recipeGroupId?: string;
   public unitOfMeasureMeasurementId?: string;
   public heatScaleId?: string;
+  public editMode: boolean = false;
   public columnVisible: boolean = false;
   public columnVisible1: boolean = false;
   public columnVisible2: boolean = false;
@@ -71,7 +87,45 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
   public columnVisible12: boolean = false;
   public columnVisible13: boolean = false;
   public columnVisible14: boolean = false;
-  public nProUspGetIngredientsResult: UspGetIngredientsResult[] = [];
+  public nProGetRecipeResult: Recipe  = {
+    addedSugar: 0,
+    calculatePortions: false,
+    cookingLoss: 0,
+    cookingLossAsMoisture: false,
+    dateCreated: "",
+    finishedWeight: 0,
+    heatScale: undefined,
+    heatScaleId: undefined,
+    internalReference: undefined,
+    isLocked: false,
+    liquid: false,
+    organisationId: "",
+    password: undefined,
+    portionCount: 0,
+    profitMargiin: 0,
+    publishedDate: undefined,
+    recipeGroupLink: [],
+    recipeId: "",
+    recipeLine: [],
+    recipeName: "",
+    recipePrice: [],
+    recipeType: undefined,
+    recipeTypeId: undefined,
+    recommendedPortionWeight: 0,
+    reference: "",
+    revision: "",
+    salePricePerPortion: 0,
+    specificGravity: 0,
+    sugarTax: undefined,
+    sugarTaxApplies: false,
+    sugarTaxId: undefined,
+    suitability: undefined,
+    suitabilityId: undefined,
+    totalCostPerPortion: 0,
+    totalWeight: 0,
+    unitOfMeasurement: undefined,
+    unitOfMeasurementId: undefined
+  }
   public nProUspSugarTaxResult: UspSugarTaxResult[] = [];
   public nProUspRecipeGroupSelectResult: UspRecipeGroupSelectResult[] = [];
   public nProUspRecipeTypeSelectAllOrganisationResult: UspRecipeTypeSelectAllOrganisationResult[] = [];
@@ -83,10 +137,16 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
   public nProUspGetIngredientsResult1: UspGetIngredientsResult[] = [];
   public nProUspGetIngredientsResult1$: Subject<void> = new Subject<void>();
 
-  constructor(private nProService: NProService) { }
+  constructor(private nProService: NProService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.nProService.getUspGetIngredientsResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspGetIngredientsResult = data);
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id != null) {
+      this.recipeId1 = id;
+      this.editMode = true;
+
+    this.nProService.getRecipeById(this.recipeId1).pipe(takeUntil(this.destroy$)).subscribe(data => this.nProGetRecipeResult = data);}
     this.nProService.getUspSugarTaxResultList().pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspSugarTaxResult = data);
     this.nProService.getUspRecipeGroupSelectResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspRecipeGroupSelectResult = data);
     this.nProService.getUspRecipeTypeSelectAllOrganisationResultList('').pipe(takeUntil(this.destroy$)).subscribe(data => this.nProUspRecipeTypeSelectAllOrganisationResult = data);
@@ -108,4 +168,83 @@ export class RecipeAddEditComponent implements OnInit, OnDestroy {
     this.nProUspGetIngredientsResult1$.complete();
     this.destroy$.complete();
   }
+
+  public editDone(evt:any) {
+
+
+      this.nProGetRecipeResult.totalWeight = 0;
+      this.nProGetRecipeResult.recipeLine.forEach(i => this.updateTotalWeight(i.quantity));
+      this.updateFinishedWeight()
+      console.log(`=> 'cellEditDone'` + evt.cellID.rowID + ' '+ evt.cellID.columnID + ' ' + evt.cellID.rowIndex);
+
+    // @ts-ignore
+
+  }
+
+  updateTotalWeight(weightToAdd: number | undefined){
+    if(weightToAdd == undefined){
+      weightToAdd = 0;
+    }
+    this.nProGetRecipeResult.totalWeight += weightToAdd;
+  }
+  updateFinishedWeight(){
+
+    let factor =  this.nProGetRecipeResult.cookingLoss / 100
+    this.nProGetRecipeResult.finishedWeight =  this.nProGetRecipeResult.totalWeight - this.nProGetRecipeResult.totalWeight * factor;
+  }
+  updateWeightLoss(){
+    this.nProGetRecipeResult.cookingLoss = (100 - (( this.nProGetRecipeResult.finishedWeight /  this.nProGetRecipeResult.totalWeight) * 100))
+    this.nProGetRecipeResult.cookingLoss = Math.round(this.nProGetRecipeResult.cookingLoss * 100) / 100
+  }
+  updateTotalPortions(){
+    if(this.nProGetRecipeResult.recommendedPortionWeight > 0) {
+      this.nProGetRecipeResult.portionCount =  this.nProGetRecipeResult.finishedWeight / this.nProGetRecipeResult.recommendedPortionWeight;
+      this.nProGetRecipeResult.portionCount = Math.round(this.nProGetRecipeResult.portionCount * 100) / 100
+    }
+
+  }
+  updatePortionSize(){
+    if(this.nProGetRecipeResult.portionCount > 0){
+      this.nProGetRecipeResult.recommendedPortionWeight = (this.nProGetRecipeResult.finishedWeight / this.nProGetRecipeResult.portionCount)
+      this.nProGetRecipeResult.recommendedPortionWeight = Math.round(this.nProGetRecipeResult.recommendedPortionWeight * 100) / 100
+    }
+  }
+
+  saveRecipe(){
+    console.log(this.nProGetRecipeResult);
+  }
+
+
+  public addIngredient(): void {
+    if(this.selectedIngredient) {
+      let newIngredient: RecipeLine = {
+        addedSugarPer100g: 0,
+        childRecipeId: undefined,
+        embeddedRecipeId: undefined,
+        quid: false,
+        quidpercentage: 0,
+        recipeId: "",
+        recipeLineId: "",
+        specificGravity: 0,
+        weightOrVolume: 0,
+        ingredientId: this.selectedIngredient.ingredientId,
+        ingredientName: this.selectedIngredient.foodName,
+        quantity: 0,
+        costPerKilo: 0,
+        liquid: false
+
+      }
+      this.nProGetRecipeResult.recipeLine.push(newIngredient);
+
+      this.searchTerm2 = '';
+
+    }
+  }
+  public gridIngredientsRowSelectionChanging(event: IRowSelectionEventArgs) {
+    this.selectedIngredient = event.newSelection[0];
+
+    console.log( this.selectedIngredient);
+  }
+
+
 }

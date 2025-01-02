@@ -31,19 +31,19 @@
                     clear
                   </igx-icon>
                 </igx-suffix>
-                <input type="text" [value]="searchTerm1!" igxInput />
+                <input type="text" [(ngModel)]="searchTerm1!" igxInput />
                 <label igxLabel>Search for</label>
               </igx-input-group>
             </div>
             <div class="row-layout group_11">
-              <igx-combo type="border" [data]="nProUspRecipeGroupSelectResult" [ngModel]="groupIds" displayKey="recipeGroupName" class="user-input">
+              <igx-combo type="border" [data]="nProUspRecipeGroupSelectResult" [(ngModel)]="groupIds" displayKey="recipeGroupName" valueKey="recipeGroupId" class="user-input">
                 <label igxLabel>In Group</label>
               </igx-combo>
             </div>
             <div class="row-layout group_3">
               <div class="column-layout group_12">
                 <div class="row-layout group_10">
-                  <igx-combo type="border" [data]="nProUspRecipeTypeSelectAllOrganisationResult" valueKey="recipeTypeId" displayKey="recipeType" class="combo">
+                  <igx-combo type="border" [data]="nProUspRecipeTypeSelectAllOrganisationResult" [(ngModel)]="typeIds" valueKey="recipeTypeId"  displayKey="recipeType" class="combo">
                     <label igxLabel>Of type</label>
                   </igx-combo>
                 </div>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="column-layout group_14">
-        <igx-grid [data]="nProUspGetRecipesResult" primaryKey="recipeId" rowSelection="single" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid-ingredients">
+        <igx-grid [data]="nProUspGetRecipesResult" primaryKey="recipeId" rowSelection="single" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="gridIngredientsRowSelectionChanging($event)" class="grid-ingredients">
           <igx-grid-toolbar>
             <igx-grid-toolbar-actions>
               <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
@@ -109,7 +109,7 @@
     </h5>
   </igx-dialog-title>
   <ng-container>
-    <p>Are you sure you want to delete the slected recipe(s)?</p>
+    <p>Are you sure you want to delete the selected recipe(s)?</p>
   </ng-container>
   <igx-dialog-actions>
     <button igxButton="flat" igxRipple [igxToggleAction]="dialogDeleteRecipe">

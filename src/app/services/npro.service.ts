@@ -17,8 +17,11 @@ import { NewIngredient } from '../models/npro/new-ingredient';
 import { UspUnitOfMeasureSelectResult } from '../models/npro/usp-unit-of-measure-select-result';
 import { UspNutrientIngredientValuesSelectMainEightResult } from '../models/npro/usp-nutrient-ingredient-values-select-main-eight-result';
 import { ErrorHandlerService } from './error-handler.service';
+import {IngredientDetail} from "../models/npro/IngredientDetails";
+import {IngredientNutrient} from "../models/npro/IngredientNutrient";
+import {Recipe} from "../models/npro/Recipe";
 
-const API_ENDPOINT = 'https://api.nutritionalpro.co.uk';
+const API_ENDPOINT = 'https://localhost:7088';
 
 @Injectable({
   providedIn: 'root'
@@ -53,34 +56,46 @@ export class NProService {
       .pipe(catchError(ErrorHandlerService.handleError<UspGetIngredientsResult[]>('getUspGetIngredientsResultList', [])));
   }
 
-  public getUspNutrientIngredientValuesSelectMainEightResultList(id: string): Observable<UspNutrientIngredientValuesSelectMainEightResult[]> {
+  public getRecipeById(id: string): Observable<Recipe> {
+    const options =
+      { params: new HttpParams().set('id', id) };
+    return this.http.get<Recipe>(`${API_ENDPOINT}/api/Recipe`, options)
+      .pipe(catchError(ErrorHandlerService.handleError<Recipe>('getRecipeById', undefined)));
+  }
+  public getIngredientById(id: string): Observable<IngredientDetail[]> {
+    const options =
+      { params: new HttpParams().set('id', id) };
+    return this.http.get<IngredientDetail[]>(`${API_ENDPOINT}/api/Ingredient`, options)
+      .pipe(catchError(ErrorHandlerService.handleError<IngredientDetail[]>('getIngredientById', undefined)));
+  }
+  public getUspNutrientIngredientValuesSelectMainEightResultList(id: string): Observable<IngredientNutrient[]> {
     const params = new HttpParams()
       .append('id', id);
     const options = {
       params,
     };
-    return this.http.get<UspNutrientIngredientValuesSelectMainEightResult[]>(`${API_ENDPOINT}/api/NutrientIngredient/maineight`, options)
-      .pipe(catchError(ErrorHandlerService.handleError<UspNutrientIngredientValuesSelectMainEightResult[]>('getUspNutrientIngredientValuesSelectMainEightResultList', [])));
+    return this.http.get<IngredientNutrient[]>(`${API_ENDPOINT}/api/NutrientIngredient/maineight`, options)
+      .pipe(catchError(ErrorHandlerService.handleError<IngredientNutrient[]>('getUspNutrientIngredientValuesSelectMainEightResultList', [])));
   }
 
-  public getUspNutrientIngredientValuesSelectVitaminsResultList(id: string): Observable<UspNutrientIngredientValuesSelectVitaminsResult[]> {
+  public getUspNutrientIngredientValuesSelectVitaminsResultList(id: string): Observable<IngredientNutrient[]> {
     const params = new HttpParams()
       .append('id', id);
     const options = {
       params,
     };
-    return this.http.get<UspNutrientIngredientValuesSelectVitaminsResult[]>(`${API_ENDPOINT}/api/NutrientIngredient/vitamins`, options)
-      .pipe(catchError(ErrorHandlerService.handleError<UspNutrientIngredientValuesSelectVitaminsResult[]>('getUspNutrientIngredientValuesSelectVitaminsResultList', [])));
+    return this.http.get<IngredientNutrient[]>(`${API_ENDPOINT}/api/NutrientIngredient/vitamins`, options)
+      .pipe(catchError(ErrorHandlerService.handleError<IngredientNutrient[]>('getUspNutrientIngredientValuesSelectVitaminsResultList', [])));
   }
 
-  public getUspNutrientIngredientValuesVisibleSelectResultList(id: string): Observable<UspNutrientIngredientValuesVisibleSelectResult[]> {
+  public getUspNutrientIngredientValuesVisibleSelectResultList(id: string): Observable<IngredientNutrient[]> {
     const params = new HttpParams()
       .append('id', id);
     const options = {
       params,
     };
-    return this.http.get<UspNutrientIngredientValuesVisibleSelectResult[]>(`${API_ENDPOINT}/api/NutrientIngredient`, options)
-      .pipe(catchError(ErrorHandlerService.handleError<UspNutrientIngredientValuesVisibleSelectResult[]>('getUspNutrientIngredientValuesVisibleSelectResultList', [])));
+    return this.http.get<IngredientNutrient[]>(`${API_ENDPOINT}/api/NutrientIngredient`, options)
+      .pipe(catchError(ErrorHandlerService.handleError<IngredientNutrient[]>('getUspNutrientIngredientValuesVisibleSelectResultList', [])));
   }
 
   public getAllergenList1(id: string): Observable<Allergen[]> {
@@ -181,4 +196,6 @@ export class NProService {
     return this.http.post<NewIngredient | undefined>(`${API_ENDPOINT}/api/Ingredient/addIngredient`, body)
       .pipe(catchError(ErrorHandlerService.handleError<NewIngredient | undefined>('postNewIngredient', undefined)));
   }
+
+
 }

@@ -57,4 +57,8 @@ export class IngredientSearchComponent implements OnInit, OnDestroy {
   public gridIngredientsRowSelectionChanging(event: IRowSelectionEventArgs) {
     this.ingredientId = event.newSelection[0]?.ingredientId as string;
   }
+
+  public searchIngredients(){
+    this.nProUspGetIngredientsResult$.next();
+  }
 }

@@ -41,6 +41,13 @@ export const routes: Routes = [{
       }
     },
     {
+      path: 'ingredient-add-edit/:id',
+      component: IngredientAddEditComponent,
+      data: {
+        text: 'Ingredient Add Edit'
+      }
+    },
+    {
       path: 'recipe-search',
       component: RecipeSearchComponent,
       data: {
@@ -49,6 +56,13 @@ export const routes: Routes = [{
     },
     {
       path: 'recipe-add-edit',
+      component: RecipeAddEditComponent,
+      data: {
+        text: 'Recipe Add Edit'
+      }
+    },
+    {
+      path: 'recipe-add-edit/:id',
       component: RecipeAddEditComponent,
       data: {
         text: 'Recipe Add Edit'

@@ -57,6 +57,11 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     this.nProService.getAllergenList().pipe(takeUntil(this.destroy$)).subscribe(data => this.nProAllergen = data);
   }
 
+
+
+  saveIngredientGroup(){
+
+  }
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
